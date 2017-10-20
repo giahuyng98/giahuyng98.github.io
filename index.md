@@ -1,1 +1,4 @@
-Duc oc cho
+---
+layout: post
+title: Blogging Like a Hacker
+---
