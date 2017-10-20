@@ -1,1 +1,6 @@
-This is my product
+---
+title: This is my title
+layout: post
+---
+
+Here is my page.
