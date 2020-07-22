@@ -57,6 +57,10 @@ const Bio = () => {
         }}
       />
 
+
+    </div>
+  )
+
       //<p>
       //  Written by <strong>{author.name}</strong> {author.summary}
       //  {` `}
@@ -64,9 +68,6 @@ const Bio = () => {
       //    You should follow him on Twitter
       //  </a>
       //</p>
-
-    </div>
-  )
 }
 
 export default Bio
