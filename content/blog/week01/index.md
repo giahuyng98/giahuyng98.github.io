@@ -1,6 +1,6 @@
 ---
 title: Simple linux command
-date: "Wed Jul 22 15:13:19 +07 2020"
+date: "2020-07-22T15:20:00.000Z"
 description: "[VTF] Week 01"
 ---
 
