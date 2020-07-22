@@ -1,4 +1,101 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Jul 2020 08:21:23 GMT</lastBuildDate><item><title><![CDATA[Simple linux command]]></title><description><![CDATA[Nothing here, sorry.]]></description><link>https://giahuyng98.github.io/week01/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;p&gt;Nothing here, sorry.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hello World]]></title><description><![CDATA[This is my first post on my new fake blog! How exciting! I’m sure I’ll write a lot more interesting things in the future. Oh, and here’s a…]]></description><link>https://giahuyng98.github.io/hello-world/</link><guid isPermaLink="false">https://giahuyng98.github.io/hello-world/</guid><pubDate>Fri, 01 May 2015 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;This is my first post on my new fake blog! How exciting!&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 22 Jul 2020 08:25:26 GMT</lastBuildDate><item><title><![CDATA[Simple linux command]]></title><description><![CDATA[Nothing here, sorry.]]></description><link>https://giahuyng98.github.io/week01/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;p&gt;Nothing here, sorry.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[first time learn git]]></title><description><![CDATA[Note Git Date: 09/07/2020 Updated: 14/07/2020 Author: huyng2 1. Why   It’s useful Quản lý các phiên bản file, merge code Hỗ trợ nhiều người…]]></description><link>https://giahuyng98.github.io/week01/git/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/git/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Note Git&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;Date: 09/07/2020&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Updated: 14/07/2020&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;Author: huyng2&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;1. Why&lt;/h2&gt;
+&lt;p&gt;  It’s useful&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quản lý các phiên bản file, merge code&lt;/li&gt;
+&lt;li&gt;Hỗ trợ nhiều người làm việc với nhau&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2. What, How&lt;/h2&gt;
+&lt;p&gt;Git là 1 version control system (quản lý phiên bản file + thư mục)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Remote: Phiên bản được lưu trên server: github, gitlab,…  &lt;/li&gt;
+&lt;li&gt;Local: Phiên bản được clone, pull về máy local&lt;/li&gt;
+&lt;li&gt;Một remote repository có thể có nhiều local khác nhau, trên một hoặc nhiều máy, với nhiều người dùng.&lt;/li&gt;
+&lt;li&gt;Một local repository có thể có nhiều remote khác nhau, mỗi remote có tên, tên có thể trùng nhau.&lt;/li&gt;
+&lt;li&gt;Cài đặt git trên ubuntu: &lt;code class=&quot;language-text&quot;&gt;sudo apt install git-all&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Các file config:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;/etc/gitconfig&lt;/code&gt;: file config dùng cho tất cả user&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;~/.gitconfig&lt;/code&gt;: file config cho user hiện tại&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;.git/config&lt;/code&gt;: file config của repository&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Thực hiện lấy file trên remote về máy local:  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;URL&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# hoặc&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;directory&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;directory&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; init
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; pull &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;URL&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Thực hiện up lên remote:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;remote name&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;branch name&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# gắn thêm remote&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; remote &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;remote name&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;url&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quy trình cơ bản:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bước 1: Chỉnh sửa các file: Thay đổi nội dung, thêm, xóa.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bước 2: Chọn những file đã thay đổi (có liên quan đến nhau) thêm vào chỉ mục (Index)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;files&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bước 3: Commit (Lưu lại lịch sử) những thay đổi này, mỗi commit sẽ có 1 &lt;strong&gt;hash code&lt;/strong&gt; tương ứng.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit -m &lt;span class=&quot;token string&quot;&gt;&quot;commited message&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;Bước 4: public thay đổi lên remote, (tạo pull/merge request)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Branch (Nhánh): Nhánh là một phiên bản file được tách ra từ một nhánh khác, mục đính phát triển tính năng mới, sửa lỗi, tạo phiên bản khác… Nhánh có thể  merge với các nhánh khác.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Xem các nhánh hiện tại, và nhánh đang đang làm việc:&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch
+&lt;span class=&quot;token comment&quot;&gt;# Tách ra một nhánh mới từ nhánh đang đứng:&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;branch-name&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Chuyển sang branch khác, commit, file:&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;name&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Merge code từ branch khác vào branch đang làm việc&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;branch-name&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Xóa branch&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;branch-name&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Merge conflict: Git không thể tự động giải quyết các xung đột giữa 2 commit, xảy ra khi merge branch, rebase, cherry-pick.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Vd nội dung file merge conflict&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; HEAD
+nội dung &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+nội dung &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; branch_or_commit
+
+&lt;span class=&quot;token comment&quot;&gt;# Ta chỉnh sửa file này (có thể dùng tool), git add, git commit đề resolve conflict&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Một số lệnh kiểm tra sử lý khi xảy ra merge conflict&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; status
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; log --merge
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;diff&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; reset --mixed
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --abort&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tag: Gắn nhãn cho commit&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lightweight tag: Tag đặt tên &lt;/li&gt;
+&lt;li&gt;Anotation tag: Tag kèm theo thông tin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; tag &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;tag-name&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;commit-code&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; tag -a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;Detacted HEAD: Là việc checkout vào một commit (not branch), khi thay đổi nội dung file trong chế độ detacted HEAD nội dung thay đổi sẽ không thuộc vào bất cứ branch nào.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Hello World]]></title><description><![CDATA[This is my first post on my new fake blog! How exciting! I’m sure I’ll write a lot more interesting things in the future. Oh, and here’s a…]]></description><link>https://giahuyng98.github.io/hello-world/</link><guid isPermaLink="false">https://giahuyng98.github.io/hello-world/</guid><pubDate>Fri, 01 May 2015 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;This is my first post on my new fake blog! How exciting!&lt;/p&gt;
 &lt;p&gt;I’m sure I’ll write a lot more interesting things in the future.&lt;/p&gt;
 &lt;p&gt;Oh, and here’s a great quote from this Wikipedia on
 &lt;a href=&quot;https://en.wikipedia.org/wiki/Salted_duck_egg&quot;&gt;salted duck eggs&lt;/a&gt;.&lt;/p&gt;
