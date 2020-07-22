@@ -8,6 +8,8 @@ module.exports = {
     description: `a description`,
     siteUrl: `https://giahuyng98.github.io/`,
     social: {
+        facebook : `giahuyng98`,
+        twitter : `giahuyng98`
     },
   },
   plugins: [
