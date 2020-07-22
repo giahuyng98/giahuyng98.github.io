@@ -11,6 +11,7 @@ description: "[VTF] Week 01"
 - for (var in array)
 - for C-like
 - match
+- OFS="new sperator"
 
   `$0 ~ /r/ # match regular expressions`
   `/r/ {action} # if match execute action`
@@ -57,10 +58,15 @@ description: "[VTF] Week 01"
   - `tolower(s) toupper(s)`
   - math `atan2(y,x) cos(x) exp(x) int(x) log(x) rand() => 0...1 sin(x) sqrt(x) srand(expr) srand()`
   - `print, printf`
+  - `gensub(regexp, replacement, how [, target])`
+  - `getline var < "-"`
+  - `system("echo "$1)`
 - User defined functions
   
 # words count : 
 
 ``` bash
-cat lorem | awk '{for(i = 1; i <= NF; ++i) words[tolower($i)]++; for(word in words) print word " : " words[word]}'
+cat filename | awk '{for(i = 1; i <= NF; ++i) words[tolower($i)]++; for(word in words) print word " : " words[word]}'
 ```
+# Useful resources
+[](https://www.shortcutfoo.com/app/dojos/awk/cheatsheet)
