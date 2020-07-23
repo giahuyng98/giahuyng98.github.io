@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 23 Jul 2020 08:49:19 GMT</lastBuildDate><item><title><![CDATA[Git Flow]]></title><description><![CDATA[Git Flow vs Git Git flow  
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 23 Jul 2020 09:20:51 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/awk/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/awk/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;Git rebase&lt;/li&gt;
+&lt;li&gt;CTDL &amp;#x26; GT: BTree, LSM Tree, Bloom Filters, HyperLogLog&lt;/li&gt;
+&lt;li&gt;OOP&lt;/li&gt;
+&lt;li&gt;SOLID&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Git Flow]]></title><description><![CDATA[Git Flow vs Git Git flow  
 add some configuration at .git/config  - Start a new feature  - Finish up a feature  - Publish a feature…]]></description><link>https://giahuyng98.github.io/week01/git-flow/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/git-flow/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Git Flow vs Git&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://danielkummer.github.io/git-flow-cheatsheet/index.html&quot;&gt;Git flow&lt;/a&gt; &lt;/p&gt;
 &lt;ol&gt;
