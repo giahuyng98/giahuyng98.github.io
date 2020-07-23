@@ -24,15 +24,15 @@ description: "[VTF] Week 01"
 2. `git flow feature start MYFEATURE` - Start a new feature
 
    ``` bash
-   git checkout -b MYFEATURE develop # develop = <set develop branch>
+   git checkout -b feature/MYFEATURE develop
    ```
 
 3. `git flow feature finish MYFEATURE` - Finish up a feature
 
    ``` bash
    git checkout develop
-   git merge --no-ff MYFEATURE
-   git branch -d MYFEATURE
+   git merge --no-ff feature/MYFEATURE
+   git branch -d feature/MYFEATURE
    ```
 
 4. `git flow feature publish MYFEATURE` - Publish a feature
