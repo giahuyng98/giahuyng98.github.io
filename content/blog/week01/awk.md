@@ -66,7 +66,7 @@ description: "[VTF] Week 01"
 # words count : 
 
 ``` bash
-echo "a, b c a" | grep -o "\b[[:alpha:]]\b" | awk '{ count[$0]++ }END{ for(idx in count) printf("%s-%d\n",idx,count[idx]) }'
+echo "a, b c a" | grep -o "\b\w*\b" | awk '{ count[$0]++ }END{ for(idx in count) printf("%s-%d\n",idx,count[idx]) }'
 
 ```
 # words boundary
