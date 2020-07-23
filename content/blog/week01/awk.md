@@ -67,6 +67,17 @@ description: "[VTF] Week 01"
 
 ``` bash
 cat filename | awk '{for(i = 1; i <= NF; ++i) words[tolower($i)]++; for(word in words) print word " : " words[word]}'
+
 ```
+# words boundary
+
+``` bash
+echo 'aa.. a. a a. aaa.' | grep '\b\w\b' -o
+# result
+# a
+# a
+# a
+```
+
 # Useful resources
 [](https://www.shortcutfoo.com/app/dojos/awk/cheatsheet)
