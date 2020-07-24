@@ -1,0 +1,30 @@
+---
+title: System design
+date: "2020-07-24T00:00:00.000Z"
+description: "System design"
+---
+
+- Load balance:
+  - DNS like - round robin..., bind.com
+  - DNS-Cache, TTL time-to-live
+  - Don't use only DNS-like, no more worry about cache
+  - Cookie, Session model break, has to send to 1
+  - Solve: Can use a storage-server, share state, load balance session.
+  - Problem: Some server dies, no robust
+  - Solve: RAID -> redundant array of independent disk
+  - RAID0 store pieces at 2 storage,
+  - RAID1 store mirror, built-automatic
+  - RAID10 RAID0+RAID1
+  - RAID5, RAID6...
+  - => reduce probi..
+
+  - Software for load balancer: ELB, HAProxy, LVS...
+  - Hardware: Barracuda, Cisco, Citrix, F5...
+  - Sticky session 
+  - In-memory caching
+  - sql cache
+  - memcached old, redis
+
+  - Data replica
+
+
