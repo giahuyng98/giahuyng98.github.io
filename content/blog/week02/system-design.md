@@ -27,4 +27,25 @@ description: "System design"
 
   - Data replica
 
+- No SQL
+  - Partition key: Unique distinct, uniform request random distributed, use to distribute
+  - Sort key
+  - LSI, GSI
 
+  - Understand the USE CASE
+    - OLTP, OLAP, DSS
+    - Define ERD
+    - Identify dala life cycle: TTL, BK
+
+ - Define access patterns
+   - Read/Write workloads
+   - Query dimensions, aggregation
+
+ - Data-modeling
+   - Avoid relational design patterns, use one table
+
+ - Review-Repeat-Review...
+
+ - Stream -> lambda
+ - Precompute
+ - version history
