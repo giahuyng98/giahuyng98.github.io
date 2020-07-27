@@ -49,3 +49,13 @@ description: "System design"
  - Stream -> lambda
  - Precompute
  - version history
+
+- CAP, ACID, BASE
+  - CAP:
+    - Consistency: All clients see the same data at the same time, no matter which node they connect to
+    - Availability: Some node are down, but the remain node return a response for any request
+    - Partition tolerance: The clusters must continue to work, despite any number of communication breakdowns between nodes in the system
+
+      When a network partition failure happens should we decide to
+      - Cancel the operation and thus decrease the availability but ensure consistency
+      - Proceed with the operation and thus provide availability but risk inconsistency
