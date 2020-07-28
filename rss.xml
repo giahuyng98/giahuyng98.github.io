@@ -1,8 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 27 Jul 2020 16:08:19 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 28 Jul 2020 02:50:56 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;Git rebase&lt;/li&gt;
 &lt;li&gt;CTDL &amp;#x26; GT: BTree, LSM Tree, Bloom Filters, HyperLogLog&lt;/li&gt;
 &lt;li&gt;OOP&lt;/li&gt;
 &lt;li&gt;SOLID&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Bloom Filter]]></title><description><![CDATA[Kiểm tra 1 phần tử có nằm trong tập hơp? Sử dụng k hash funcs Add: hash input => list value => setallbitvalue = 1 Check: hash input => list…]]></description><link>https://giahuyng98.github.io/week03/bloom-filter/</link><guid isPermaLink="false">https://giahuyng98.github.io/week03/bloom-filter/</guid><pubDate>Tue, 28 Jul 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Kiểm tra 1 phần tử có nằm trong tập hơp?&lt;/p&gt;
+&lt;p&gt;Sử dụng k hash funcs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add: hash input =&gt; list value =&gt; setallbit[value] = 1&lt;/li&gt;
+&lt;li&gt;Check: hash input =&gt; list value =&gt; getallbit[value] == 1 ?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;m: size of bitset
+n: number of elements
+k: number of hash functions&lt;/p&gt;
+&lt;p&gt;k = (m / 2) * ln2&lt;/p&gt;
+&lt;p&gt;Ứng dụng:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Giảm số lần đọc từ disk (key không nằm trong bloom filter)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Kiểm tra mật khẩu yếu&lt;/li&gt;
+&lt;li&gt;Kiểm tra các trang web độc hại&lt;/li&gt;
+&lt;li&gt;Kiểm tra username, email tồn tại, kiểm tra chính tả&lt;/li&gt;
+&lt;li&gt;Medium kiểm tra bài viết đã được đọc bởi user&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hạn chế, cải tiến:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bloom filter không xóa được key =&gt; counting bloom filter&lt;/li&gt;
+&lt;li&gt;Chú ý m,n,k&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Btree]]></title><description><![CDATA[Invented by Rudolf Bayer and Edward M.McCreight (Boeing Research Labs) B stand for ??? Benefit: reduce disk access Generally: node size is…]]></description><link>https://giahuyng98.github.io/week03/btree/</link><guid isPermaLink="false">https://giahuyng98.github.io/week03/btree/</guid><pubDate>Mon, 27 Jul 2020 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;Invented by Rudolf Bayer and Edward M.McCreight (Boeing Research Labs)&lt;/li&gt;
 &lt;li&gt;B stand for ???&lt;/li&gt;
@@ -101,7 +129,76 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Awk]]></title><description><![CDATA[awk - pattern scanning and text processing language F value:  sets the field separator, FS, to value v var=value assigns value to program…]]></description><link>https://giahuyng98.github.io/week01/awk/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/awk/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;awk - pattern scanning and text processing language&lt;/h1&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Git Flow]]></title><description><![CDATA[Git Flow vs Git Git flow  
+add some configuration at .git/config  - Start a new feature  - Finish up a feature  - Publish a feature…]]></description><link>https://giahuyng98.github.io/week01/git-flow/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/git-flow/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Git Flow vs Git&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://danielkummer.github.io/git-flow-cheatsheet/index.html&quot;&gt;Git flow&lt;/a&gt; &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow init&lt;/code&gt;
+add some configuration at .git/config&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;file&quot;&gt;&lt;pre class=&quot;language-file&quot;&gt;&lt;code class=&quot;language-file&quot;&gt;/ .git/config
+...
+[gitflow &amp;quot;branch&amp;quot;]
+  master = &amp;lt;set master branch&amp;gt;
+  develop = &amp;lt;set develop branch&amp;gt;
+[gitflow &amp;quot;prefix&amp;quot;]
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature start MYFEATURE&lt;/code&gt; - Start a new feature&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b feature/MYFEATURE develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature finish MYFEATURE&lt;/code&gt; - Finish up a feature&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff feature/MYFEATURE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d feature/MYFEATURE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature publish MYFEATURE&lt;/code&gt; - Publish a feature&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout feature/MYFEATURE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature pull origin MYFEATURE&lt;/code&gt; - Getting a published feature&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout feature/MYFEATURE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; pull&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release start RELEASE [BASE]&lt;/code&gt; - Start a release&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b release/RELEASE develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release publish RELEASE&lt;/code&gt; - Publish a release&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b release/RELEASE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push -u origin release/RELEASE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release finish RELEASE&lt;/code&gt; - Finish up a release&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Merges the release branch back into &apos;master&apos;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout master
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff release/RELEASE
+&lt;span class=&quot;token comment&quot;&gt;# Tags the release with its name&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; tag RELEASE
+&lt;span class=&quot;token comment&quot;&gt;# Back-merges the release into &apos;develop&apos;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff release/RELEASE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d release/RELEASE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push origin --tags&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow hotfix start VERSION [BASENAME]&lt;/code&gt; - Hotfix start&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b hotfix/VERSION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow hotfix finish VERSION&lt;/code&gt; - Finish a hotfix&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout master
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff hotfix/VERSION
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff hotfix/VERSION
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d hotfix/VERSION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Awk]]></title><description><![CDATA[awk - pattern scanning and text processing language F value:  sets the field separator, FS, to value v var=value assigns value to program…]]></description><link>https://giahuyng98.github.io/week01/awk/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/awk/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;awk - pattern scanning and text processing language&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;F value:  sets the field separator, FS, to value&lt;/li&gt;
 &lt;li&gt;v var=value assigns value to program variable var.&lt;/li&gt;
@@ -229,76 +326,7 @@ every change reconstruct $0 -&gt; NF …&lt;/li&gt;
 &lt;span class=&quot;token comment&quot;&gt;# a&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;# a&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;Useful resources&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.shortcutfoo.com/app/dojos/awk/cheatsheet&quot;&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git Flow]]></title><description><![CDATA[Git Flow vs Git Git flow  
-add some configuration at .git/config  - Start a new feature  - Finish up a feature  - Publish a feature…]]></description><link>https://giahuyng98.github.io/week01/git-flow/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/git-flow/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Git Flow vs Git&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://danielkummer.github.io/git-flow-cheatsheet/index.html&quot;&gt;Git flow&lt;/a&gt; &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow init&lt;/code&gt;
-add some configuration at .git/config&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;file&quot;&gt;&lt;pre class=&quot;language-file&quot;&gt;&lt;code class=&quot;language-file&quot;&gt;/ .git/config
-...
-[gitflow &amp;quot;branch&amp;quot;]
-  master = &amp;lt;set master branch&amp;gt;
-  develop = &amp;lt;set develop branch&amp;gt;
-[gitflow &amp;quot;prefix&amp;quot;]
-...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature start MYFEATURE&lt;/code&gt; - Start a new feature&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b feature/MYFEATURE develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature finish MYFEATURE&lt;/code&gt; - Finish up a feature&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff feature/MYFEATURE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d feature/MYFEATURE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature publish MYFEATURE&lt;/code&gt; - Publish a feature&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout feature/MYFEATURE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature pull origin MYFEATURE&lt;/code&gt; - Getting a published feature&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout feature/MYFEATURE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; pull&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release start RELEASE [BASE]&lt;/code&gt; - Start a release&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b release/RELEASE develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release publish RELEASE&lt;/code&gt; - Publish a release&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b release/RELEASE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push -u origin release/RELEASE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release finish RELEASE&lt;/code&gt; - Finish up a release&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Merges the release branch back into &apos;master&apos;&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout master
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff release/RELEASE
-&lt;span class=&quot;token comment&quot;&gt;# Tags the release with its name&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; tag RELEASE
-&lt;span class=&quot;token comment&quot;&gt;# Back-merges the release into &apos;develop&apos;&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff release/RELEASE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d release/RELEASE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push origin --tags&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow hotfix start VERSION [BASENAME]&lt;/code&gt; - Hotfix start&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b hotfix/VERSION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow hotfix finish VERSION&lt;/code&gt; - Finish a hotfix&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout master
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff hotfix/VERSION
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff hotfix/VERSION
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d hotfix/VERSION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[first time learn git]]></title><description><![CDATA[Note Git Date: 09/07/2020 Updated: 14/07/2020 Author: huyng2 1. Why   It’s useful Quản lý các phiên bản file, merge code Hỗ trợ nhiều người…]]></description><link>https://giahuyng98.github.io/week01/git/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/git/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Note Git&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.shortcutfoo.com/app/dojos/awk/cheatsheet&quot;&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[first time learn git]]></title><description><![CDATA[Note Git Date: 09/07/2020 Updated: 14/07/2020 Author: huyng2 1. Why   It’s useful Quản lý các phiên bản file, merge code Hỗ trợ nhiều người…]]></description><link>https://giahuyng98.github.io/week01/git/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/git/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Note Git&lt;/h1&gt;
 &lt;p&gt;&lt;em&gt;Date: 09/07/2020&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Updated: 14/07/2020&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Author: huyng2&lt;/em&gt;&lt;/p&gt;
@@ -395,7 +423,7 @@ nội dung &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
 &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; tag -a&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
 &lt;li&gt;Detacted HEAD: Là việc checkout vào một commit (not branch), khi thay đổi nội dung file trong chế độ detacted HEAD nội dung thay đổi sẽ không thuộc vào bất cứ branch nào.&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Simple linux command]]></title><description><![CDATA[Nothing here, sorry.]]></description><link>https://giahuyng98.github.io/week01/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;p&gt;Nothing here, sorry.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gen slides from markdown using pandoc]]></title><description><![CDATA[Some generated slide]]></description><link>https://giahuyng98.github.io/week01/presentation/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/presentation/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;pandoc -t beamer &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;input.md&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;output.pdf&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Gen slides from markdown using pandoc]]></title><description><![CDATA[Some generated slide]]></description><link>https://giahuyng98.github.io/week01/presentation/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/presentation/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;pandoc -t beamer &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;input.md&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;output.pdf&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;---
 title:
 - BitTorrent Protocol
@@ -611,7 +639,7 @@ Torrenting itself is not illgal. The sharing of copyrighted material is illegal
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hello World]]></title><description><![CDATA[This is my first post on my new fake blog! How exciting! I’m sure I’ll write a lot more interesting things in the future. Oh, and here’s a…]]></description><link>https://giahuyng98.github.io/hello-world/</link><guid isPermaLink="false">https://giahuyng98.github.io/hello-world/</guid><pubDate>Fri, 01 May 2015 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;This is my first post on my new fake blog! How exciting!&lt;/p&gt;
+    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Simple linux command]]></title><description><![CDATA[Nothing here, sorry.]]></description><link>https://giahuyng98.github.io/week01/</link><guid isPermaLink="false">https://giahuyng98.github.io/week01/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;p&gt;Nothing here, sorry.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hello World]]></title><description><![CDATA[This is my first post on my new fake blog! How exciting! I’m sure I’ll write a lot more interesting things in the future. Oh, and here’s a…]]></description><link>https://giahuyng98.github.io/hello-world/</link><guid isPermaLink="false">https://giahuyng98.github.io/hello-world/</guid><pubDate>Fri, 01 May 2015 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;This is my first post on my new fake blog! How exciting!&lt;/p&gt;
 &lt;p&gt;I’m sure I’ll write a lot more interesting things in the future.&lt;/p&gt;
 &lt;p&gt;Oh, and here’s a great quote from this Wikipedia on
 &lt;a href=&quot;https://en.wikipedia.org/wiki/Salted_duck_egg&quot;&gt;salted duck eggs&lt;/a&gt;.&lt;/p&gt;
