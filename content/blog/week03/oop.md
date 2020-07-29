@@ -82,41 +82,42 @@ description: "OOP"
     }
 
     ```
+
 # Purely OOP
-- 7 qualities:
-  1. Encapsulation/Data Hiding
-  2. Inheritance
-  3. Polymorphism
-  4. Abstraction
-  5. All predefined types are objects
-  6. All user defined types are objects
-  7. All operations performed on objects must be only through methods exposed at the objects
+  - 7 qualities:
+    1. Encapsulation/Data Hiding
+    2. Inheritance
+    3. Polymorphism
+    4. Abstraction
+    5. All predefined types are objects
+    6. All user defined types are objects
+    7. All operations performed on objects must be only through methods exposed at the objects
 
 # Design patterns
-- Gang of Four
-  1. Cretional patterns (5):
-    - Factory method
-    - Abstract factory
-    - Singleton
-    - Builder
-    - Prototype
-  2. Structural patterns (7):
-    - Adapter
-    - Bridge
-    - Composite
-    - Decorator
-    - Facade
-    - Flyweight
-    - Proxy
-  3. Behavioral (11)
-    - Chain-of-responsibility
-    - Command
-    - Interpreter
-    - Iterator
-    - Mediator
-    - Memento
-    - Observer
-    - State
-    - Strategy
-    - Template method
-    - Visitor
+  - Gang of Four
+    ## Cretional patterns (5):
+      - Factory method
+      - Abstract factory
+      - Singleton
+      - Builder
+      - Prototype
+    ## Structural patterns (7):
+      - Adapter
+      - Bridge
+      - Composite
+      - Decorator
+      - Facade
+      - Flyweight
+      - Proxy
+    ## Behavioral (11)
+      - Chain-of-responsibility
+      - Command
+      - Interpreter
+      - Iterator
+      - Mediator
+      - Memento
+      - Observer
+      - State
+      - Strategy
+      - Template method
+      - Visitor
