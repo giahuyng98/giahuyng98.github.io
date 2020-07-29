@@ -1,22 +1,142 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 28 Jul 2020 10:53:39 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 29 Jul 2020 07:51:56 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;Git rebase&lt;/li&gt;
 &lt;li&gt;CTDL &amp;#x26; GT: BTree, LSM Tree, Bloom Filters, HyperLogLog&lt;/li&gt;
 &lt;li&gt;OOP&lt;/li&gt;
 &lt;li&gt;SOLID&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[OOP]]></title><description><![CDATA[OOP basic Object-oriented programming (OOP): programming paradigm base on the concept of object contain: attributes and methods Classes…]]></description><link>https://giahuyng98.github.io/week03/oop/</link><guid isPermaLink="false">https://giahuyng98.github.io/week03/oop/</guid><pubDate>Wed, 29 Jul 2020 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;OOP basic&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Object-oriented programming (OOP): programming paradigm base on the concept of &lt;strong&gt;object&lt;/strong&gt; contain: attributes and methods&lt;/li&gt;
+&lt;li&gt;Classes: Definitions for the data format and vailable procedures.&lt;/li&gt;
+&lt;li&gt;Objects: Instances of classes&lt;/li&gt;
+&lt;li&gt;Dynamic dispatch: select the procedural code to execute when call method (message passing), (by lookup method at run time in object table)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OOP Concepts/Features&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Encapsulation: Binds together the data and functions, keep both safe from outsite =&gt; data hiding&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Square&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; size&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// data-hiding&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// ...getter/setter&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; size &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; size&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// `pack` information about a square to a class...&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Abstraction: object should &lt;em&gt;only&lt;/em&gt; expose a high-level mechanism for using it, hide implementation details.&lt;/li&gt;
+&lt;li&gt;Composition: Object can contain other objects in their instance variables. Represent &lt;strong&gt;has-a&lt;/strong&gt; relationships.&lt;/li&gt;
+&lt;li&gt;Inheritance: &lt;strong&gt;is-a-type-of&lt;/strong&gt; relationships, reuse the same procedures and data definitions, subclass can override the methods defined by supperclasses,&lt;/li&gt;
+&lt;li&gt;Multiple inheritance: inheritance from more 2 or more class&lt;/li&gt;
+&lt;li&gt;Abstract classes: Can’t be instantiated&lt;/li&gt;
+&lt;li&gt;Composition over inheritance: Golang&lt;/li&gt;
+&lt;li&gt;Polymorphism: run which code? the parent class or one of its descendants&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; name&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; age&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Person {&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;
+               &lt;span class=&quot;token string&quot;&gt;&quot;Name: &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; name &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;, &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; 
+               &lt;span class=&quot;token string&quot;&gt;&quot;Age: &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; age &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;EmployeeCard&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; cardNumber&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Employee&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// inheritance&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;EmployeeCard&lt;/span&gt; card&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// compositions&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Coder&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Employee&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Coder {&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;
+               &lt;span class=&quot;token string&quot;&gt;&quot;Name: &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; name &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;, &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; 
+               &lt;span class=&quot;token string&quot;&gt;&quot;Age: &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; age &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ITHelper&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Employee&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ITHelper {&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;
+               &lt;span class=&quot;token string&quot;&gt;&quot;Name: &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; name &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;, &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; 
+               &lt;span class=&quot;token string&quot;&gt;&quot;Age: &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; age &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;}&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Printer&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;Person&lt;/span&gt; person&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;// polymorphism&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;person&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Purely OOP&lt;/h1&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;7 qualities:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Encapsulation/Data Hiding&lt;/li&gt;
+&lt;li&gt;Inheritance&lt;/li&gt;
+&lt;li&gt;Polymorphism&lt;/li&gt;
+&lt;li&gt;Abstraction&lt;/li&gt;
+&lt;li&gt;All predefined types are objects&lt;/li&gt;
+&lt;li&gt;All user defined types are objects&lt;/li&gt;
+&lt;li&gt;All operations performed on objects must be only through methods exposed at the objects&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Design patterns&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Gang of Four&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cretional patterns (5):&lt;/li&gt;
+&lt;li&gt;Factory method&lt;/li&gt;
+&lt;li&gt;Abstract factory&lt;/li&gt;
+&lt;li&gt;Singleton&lt;/li&gt;
+&lt;li&gt;Builder&lt;/li&gt;
+&lt;li&gt;Prototype&lt;/li&gt;
+&lt;li&gt;Structural patterns (7):&lt;/li&gt;
+&lt;li&gt;Adapter&lt;/li&gt;
+&lt;li&gt;Bridge&lt;/li&gt;
+&lt;li&gt;Composite&lt;/li&gt;
+&lt;li&gt;Decorator&lt;/li&gt;
+&lt;li&gt;Facade&lt;/li&gt;
+&lt;li&gt;Flyweight&lt;/li&gt;
+&lt;li&gt;Proxy&lt;/li&gt;
+&lt;li&gt;Behavioral (11)&lt;/li&gt;
+&lt;li&gt;Chain-of-responsibility&lt;/li&gt;
+&lt;li&gt;Command&lt;/li&gt;
+&lt;li&gt;Interpreter&lt;/li&gt;
+&lt;li&gt;Iterator&lt;/li&gt;
+&lt;li&gt;Mediator&lt;/li&gt;
+&lt;li&gt;Memento&lt;/li&gt;
+&lt;li&gt;Observer&lt;/li&gt;
+&lt;li&gt;State&lt;/li&gt;
+&lt;li&gt;Strategy&lt;/li&gt;
+&lt;li&gt;Template method&lt;/li&gt;
+&lt;li&gt;Visitor&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[LSM Tree]]></title><description><![CDATA[source Flavors of IO Sector/Block/Page Sector size: 512
-Block (1 Nhóm các sector liền kề) size: 512, 1024, 2048, 4096 bytes
+Block (1 group of adjacency sector) size: 512, 1024, 2048, 4096 bytes
 Virtual Memory…]]></description><link>https://giahuyng98.github.io/week03/lsm-tree/</link><guid isPermaLink="false">https://giahuyng98.github.io/week03/lsm-tree/</guid><pubDate>Tue, 28 Jul 2020 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://medium.com/databasss/on-disk-io-part-3-lsm-trees-8b2da218496f&quot;&gt;source&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;Flavors of IO&lt;/h1&gt;
 &lt;h2&gt;Sector/Block/Page&lt;/h2&gt;
 &lt;p&gt;Sector size: 512
-Block (1 Nhóm các sector liền kề) size: 512, 1024, 2048, 4096 bytes
+Block (1 group of adjacency sector) size: 512, 1024, 2048, 4096 bytes
 [Virtual Memory Pages] =&gt; [File System Block] =&gt; [Sector]&lt;/p&gt;
 &lt;h2&gt;Standard IO&lt;/h2&gt;
 &lt;h2&gt;Kernel Page cache&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Read [Read request] =&gt; [Page cache] yes =&gt; Read, no =&gt; full ? LRU, read&lt;/li&gt;
 &lt;li&gt;Write [Write request] =&gt; [Page cache] dirty page =&gt; flush/writeback =&gt; [IO queue]&lt;/li&gt;
-&lt;li&gt;Page cache: cải tiến tốc độ IO bằng cách hoãn ghi, đọc “khôn”&lt;/li&gt;
+&lt;li&gt;Page cache: Improve IO performent by delay write/read ahead (prefetch)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Direct IO&lt;/h2&gt;
 &lt;ul&gt;
