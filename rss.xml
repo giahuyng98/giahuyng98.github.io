@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 29 Jul 2020 07:54:50 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 29 Jul 2020 08:01:57 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;Git rebase&lt;/li&gt;
 &lt;li&gt;CTDL &amp;#x26; GT: BTree, LSM Tree, Bloom Filters, HyperLogLog&lt;/li&gt;
 &lt;li&gt;OOP&lt;/li&gt;
@@ -15,15 +15,15 @@
 &lt;li&gt;Encapsulation: Binds together the data and functions, keep both safe from outsite =&gt; data hiding&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;java&quot;&gt;&lt;pre class=&quot;language-java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Square&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; size&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// data-hiding&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; size&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// data-hiding&lt;/span&gt;
 
-&lt;span class=&quot;token comment&quot;&gt;// ...getter/setter&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// ...getter/setter&lt;/span&gt;
 
-&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; size &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; size&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; size &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; size&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-&lt;span class=&quot;token comment&quot;&gt;// `pack` information about a square to a class...&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// `pack` information about a square to a class...&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Abstraction: object should &lt;em&gt;only&lt;/em&gt; expose a high-level mechanism for using it, hide implementation details.&lt;/li&gt;
@@ -114,7 +114,7 @@
 &lt;li&gt;Flyweight&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Proxy&lt;/p&gt;
-&lt;h2&gt;Behavioral (11)&lt;/h2&gt;
+&lt;h2&gt;Behavioral patterns (11)&lt;/h2&gt;
 &lt;/li&gt;
 &lt;li&gt;Chain-of-responsibility&lt;/li&gt;
 &lt;li&gt;Command&lt;/li&gt;
