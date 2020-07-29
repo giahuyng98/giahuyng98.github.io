@@ -102,7 +102,89 @@ class Drawer {
  ```
 
 - If we want to add new kind of shape, all we need to do is add a new dirvative of the Shape class and implement all its functions, e.g `draw()`
-- 
+
+## The Liskov Substitution Principle
+- **Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it**
+
+``` java
+// violate LSP, since it must know every possible derivative of the Shape class, and it must changed whenever new derivatices of Shape are created
+class Drawer {
+    public static void draw(List<Shape> shapes) {
+        for(Shape shape : shapes) {
+            if (shape instanceof Rectangle) {
+                // draw rectangle
+            } else if (shape instanceof Circle) {
+                // draw circle
+            }
+        }
+    }
+}
+```
+
+``` java
+class Rectangle {
+    private float int width;
+    private float int height;
+    //getter,setter
+
+    public float area() {
+        return width * height;
+    }
+}
+class Square extends Rectangle {
+    public void setWidth(float width) {
+        super.setWidth(width);
+        super.setHeight(width);
+    }
+    public void setHeight(float height) {
+        super.setWidth(height);
+        super.setHeight(height);
+    }
+}
+// Problem 1: Memory issue
+// Problem 2: consider function
+
+public void doWord(Rectangle rec) {
+    rec.setWidth(3);
+    rec.setHeight(5);
+    System.out.println(rec.area()); // 15 ? 
+}
+
+// if we pass a Square as parameter the function will print: 15? no it will print 25
+
+```
+
+## The Interface Segregation
+- Split big interface into groups of smaller interface with specific purpose
+
+``` java
+public interface IAnimal {
+    public void eat();
+    public void drink();
+    public void sleep();
+    public void fly();
+    public void swim();
+}
+
+// slit
+public interface IAnimal {
+    public void eat();
+    public void drink();
+    public void sleep();
+}
+
+public interface IBird {
+    public void fly();
+}
+
+public interface IFish {
+    public void swim();
+}
+
+```
+
+## The Dependency Inversion
+- High level policy should not depend upon modules that implement details. Rather, both kinds of modules should depend upon abstractions.
 
 # Packages design principles
 
