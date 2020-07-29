@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 29 Jul 2020 07:51:56 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 29 Jul 2020 07:54:50 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;Git rebase&lt;/li&gt;
 &lt;li&gt;CTDL &amp;#x26; GT: BTree, LSM Tree, Bloom Filters, HyperLogLog&lt;/li&gt;
 &lt;li&gt;OOP&lt;/li&gt;
@@ -75,8 +75,10 @@
         &lt;span class=&quot;token class-name&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;person&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;Purely OOP&lt;/h1&gt;
 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Purely OOP&lt;/h1&gt;
+&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;7 qualities:&lt;/p&gt;
 &lt;ol&gt;
@@ -94,22 +96,26 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Gang of Four&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Cretional patterns (5):&lt;/li&gt;
+&lt;h2&gt;Cretional patterns (5):&lt;/h2&gt;
+&lt;ul&gt;
 &lt;li&gt;Factory method&lt;/li&gt;
 &lt;li&gt;Abstract factory&lt;/li&gt;
 &lt;li&gt;Singleton&lt;/li&gt;
 &lt;li&gt;Builder&lt;/li&gt;
-&lt;li&gt;Prototype&lt;/li&gt;
-&lt;li&gt;Structural patterns (7):&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Prototype&lt;/p&gt;
+&lt;h2&gt;Structural patterns (7):&lt;/h2&gt;
+&lt;/li&gt;
 &lt;li&gt;Adapter&lt;/li&gt;
 &lt;li&gt;Bridge&lt;/li&gt;
 &lt;li&gt;Composite&lt;/li&gt;
 &lt;li&gt;Decorator&lt;/li&gt;
 &lt;li&gt;Facade&lt;/li&gt;
 &lt;li&gt;Flyweight&lt;/li&gt;
-&lt;li&gt;Proxy&lt;/li&gt;
-&lt;li&gt;Behavioral (11)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Proxy&lt;/p&gt;
+&lt;h2&gt;Behavioral (11)&lt;/h2&gt;
+&lt;/li&gt;
 &lt;li&gt;Chain-of-responsibility&lt;/li&gt;
 &lt;li&gt;Command&lt;/li&gt;
 &lt;li&gt;Interpreter&lt;/li&gt;
@@ -121,7 +127,7 @@
 &lt;li&gt;Strategy&lt;/li&gt;
 &lt;li&gt;Template method&lt;/li&gt;
 &lt;li&gt;Visitor&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[LSM Tree]]></title><description><![CDATA[source Flavors of IO Sector/Block/Page Sector size: 512
 Block (1 group of adjacency sector) size: 512, 1024, 2048, 4096 bytes
