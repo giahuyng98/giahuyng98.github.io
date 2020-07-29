@@ -16,15 +16,15 @@ description: "OOP"
 
   ``` java
   class Square {
-    private float size; // data-hiding
+      private float size; // data-hiding
 
-    // ...getter/setter
+      // ...getter/setter
 
-    public float area() {
-        return size * size;
-    }
+      public float area() {
+          return size * size;
+      }
 
-    // `pack` information about a square to a class...
+      // `pack` information about a square to a class...
   }
   ```
 
@@ -109,7 +109,7 @@ description: "OOP"
       - Facade
       - Flyweight
       - Proxy
-    ## Behavioral (11)
+    ## Behavioral patterns (11)
       - Chain-of-responsibility
       - Command
       - Interpreter
