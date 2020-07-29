@@ -11,7 +11,7 @@ description: "LSM Tree"
 ## Sector/Block/Page
 
 Sector size: 512
-Block (1 Nhóm các sector liền kề) size: 512, 1024, 2048, 4096 bytes
+Block (1 group of adjacency sector) size: 512, 1024, 2048, 4096 bytes
 [Virtual Memory Pages] => [File System Block] => [Sector]
 
 ## Standard IO
@@ -19,7 +19,7 @@ Block (1 Nhóm các sector liền kề) size: 512, 1024, 2048, 4096 bytes
 ## Kernel Page cache
 - Read [Read request] => [Page cache] yes => Read, no => full ? LRU, read
 - Write [Write request] => [Page cache] dirty page => flush/writeback => [IO queue]
-- Page cache: cải tiến tốc độ IO bằng cách hoãn ghi, đọc "khôn"
+- Page cache: Improve IO performent by delay write/read ahead (prefetch)
 
 ## Direct IO
 - Không dùng kernel page cache, custom-IO..., 
