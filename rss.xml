@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 30 Jul 2020 10:14:48 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week03/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week03/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 30 Jul 2020 10:18:09 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[TLB Cuckoo Filter TCP Book link Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/todo/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/todo/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Translation_lookaside_buffer&quot;&gt;TLB&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Cuckoo_filter&quot;&gt;Cuckoo Filter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Transmission_Control_Protocol&quot;&gt;TCP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Book &lt;a href=&quot;https://eclass.teicrete.gr/modules/document/file.php/TP326/%CE%98%CE%B5%CF%89%CF%81%CE%AF%CE%B1%20(Lectures)/Computer_Networking_A_Top-Down_Approach.pdf&quot;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
 &lt;li&gt;Git rebase&lt;/li&gt;
 &lt;li&gt;CTDL &amp;#x26; GT: BTree, LSM Tree, Bloom Filters, HyperLogLog&lt;/li&gt;
 &lt;li&gt;OOP&lt;/li&gt;
