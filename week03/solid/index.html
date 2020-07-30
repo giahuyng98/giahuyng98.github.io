@@ -198,6 +198,89 @@
 <h2>The Dependency Inversion</h2>
 <ul>
 <li>High level policy should not depend upon modules that implement details. Rather, both kinds of modules should depend upon abstractions.</li>
+<li>Interface (abstraction) should not depend on details, but vice versa. Classes communicate throught interface not by implemention.</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// Low level model</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmailService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendMail</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//send msg</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// High level module</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Controller</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">EmailService</span> emailService <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EmailService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Dependency inversion</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        emailService<span class="token punctuation">.</span><span class="token function">senMail</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<ul>
+<li>Inversion of Control (IoC): design pattern, ServiceLocator, Event, Delegate</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// Low level model</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MessageService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmailService</span> <span class="token keyword">implements</span> <span class="token class-name">MessageService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//send msg</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SmsService</span> <span class="token keyword">implements</span> <span class="token class-name">MessageService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//send msg</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// High level module</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Controller</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">MessageService</span> srv<span class="token punctuation">;</span>
+
+    <span class="token comment">// Constructor Injection</span>
+    <span class="token keyword">public</span> <span class="token class-name">Constructor</span><span class="token punctuation">(</span><span class="token class-name">MessageService</span> srv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>srv <span class="token operator">=</span> srv<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        srv<span class="token punctuation">.</span><span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">MessageService</span> messageService <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EmailService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Controller</span> controller <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Controller</span><span class="token punctuation">(</span>messageService<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Controller</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<ul>
+<li>DI Container</li>
+<li>
+<p>Dependency Injection</p>
+<ul>
+<li>Create instances</li>
+<li>Manage dependencies</li>
+<li>Inject dependencies</li>
+</ul>
+</li>
+<li>
+<p>Advantages:</p>
+<ul>
+<li>Reduced dependencies</li>
+<li>Reusable code, maintainable, reduce boiler-plate</li>
+<li>Testable</li>
+<li>Readable</li>
+</ul>
+</li>
+<li>
+<p>Disavantages:</p>
+<ul>
+<li>Hard to understand</li>
+<li>Hard to debug</li>
+<li>Object create at begining, performance issues</li>
+<li>May run-time error (not compile-time)</li>
+</ul>
+</li>
 </ul>
 <h1>Packages design principles</h1>
 <h1>References</h1>
