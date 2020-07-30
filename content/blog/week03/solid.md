@@ -12,7 +12,7 @@ description: "SOLID"
 |OCP  | The Open Closed Principle       | Able to extend a classes behavior, without modifying it.|
 |LSP  | The Liskov Substitution Principle| Derived classes must be substituable for their base classes.|
 |ISP  | The Interface Segregation Principle| Make fine grained interfaces that are client specific.|
-|DIP  | The Dependency Inversion Principle| Depend on abstractions, not on conretions.|
+|DIP  | The Dependency Inversion Principle| Depend on abstractions, not on concretions.|
 
 ## Single Responsibility Principle
 - **A class should have only one reason to change**
