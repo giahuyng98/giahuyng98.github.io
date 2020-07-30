@@ -14,7 +14,7 @@ m: size of bitset
 n: number of elements
 k: number of hash functions
 
-k = (m / 2) * ln2
+k = (m / n) * ln2
 
 Ứng dụng:
 - Giảm số lần đọc từ disk (key không nằm trong bloom filter)
