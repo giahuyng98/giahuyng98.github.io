@@ -185,6 +185,84 @@ public interface IFish {
 
 ## The Dependency Inversion
 - High level policy should not depend upon modules that implement details. Rather, both kinds of modules should depend upon abstractions.
+- Interface (abstraction) should not depend on details, but vice versa. Classes communicate throught interface not by implemention.
+
+``` java
+// Low level model
+public class EmailService {
+    public void sendMail(String msg) {
+        //send msg
+    }
+}
+// High level module
+public class Controller {
+    private EmailService emailService = new EmailService(); // Dependency inversion
+
+    public void send() { 
+        emailService.senMail("message");
+    }
+}
+```
+
+- Inversion of Control (IoC): design pattern, ServiceLocator, Event, Delegate
+
+``` java
+// Low level model
+public interface MessageService {
+    public void sendMessage(String msg);
+}
+public class EmailService implements MessageService {
+    public void sendMessage(String msg) {
+        //send msg
+    }
+}
+public class SmsService implements MessageService {
+    public void sendMessage(String msg) {
+        //send msg
+    }
+}
+
+// High level module
+public class Controller {
+    private MessageService srv;
+
+    // Constructor Injection
+    public Constructor(MessageService srv) {
+        this.srv = srv;
+    }
+
+    public void send() { 
+        srv.sendMessage("message");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MessageService messageService = new EmailService();
+        Controller controller = new Controller(messageService);
+        Controller.send();
+    }
+}
+
+```
+
+- DI Container
+
+- Dependency Injection
+  - Create instances
+  - Manage dependencies
+  - Inject dependencies
+
+- Advantages:
+  - Reduced dependencies
+  - Reusable code, maintainable, reduce boiler-plate
+  - Testable
+  - Readable
+- Disavantages:
+  - Hard to understand
+  - Hard to debug
+  - Object create at begining, performance issues
+  - May run-time error (not compile-time)
 
 # Packages design principles
 
