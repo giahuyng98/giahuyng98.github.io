@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 30 Jul 2020 03:03:36 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 30 Jul 2020 04:59:02 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Git rebase CTDL & GT: BTree, LSM Tree, Bloom Filters, HyperLogLog OOP SOLID]]></description><link>https://giahuyng98.github.io/week02/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;Git rebase&lt;/li&gt;
 &lt;li&gt;CTDL &amp;#x26; GT: BTree, LSM Tree, Bloom Filters, HyperLogLog&lt;/li&gt;
 &lt;li&gt;OOP&lt;/li&gt;
@@ -225,7 +225,7 @@ mmap&lt;/p&gt;
 &lt;p&gt;m: size of bitset
 n: number of elements
 k: number of hash functions&lt;/p&gt;
-&lt;p&gt;k = (m / 2) * ln2&lt;/p&gt;
+&lt;p&gt;k = (m / n) * ln2&lt;/p&gt;
 &lt;p&gt;Ứng dụng:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
