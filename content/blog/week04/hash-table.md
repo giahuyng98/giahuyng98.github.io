@@ -1,5 +1,5 @@
 ---
-title: Btree
+title: Hash table
 date: "2020-07-30T15:10:00.000Z"
 description: "Hash table"
 ---
