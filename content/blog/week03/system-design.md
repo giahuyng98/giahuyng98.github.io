@@ -4,6 +4,9 @@ date: "2020-07-24T00:00:00.000Z"
 description: "System design"
 ---
 
+# System design primer
+
+## Step 1
 - Load balance:
   - DNS like - round robin..., bind.com
   - DNS-Cache, TTL time-to-live
@@ -26,6 +29,20 @@ description: "System design"
   - memcached old, redis
 
   - Data replica
+
+## Step 2
+1. Clones
+2. Database
+  - Master-Slave, Sharding, denormalization, SQL tuning
+  - Denormalize from begining, no-sql, no-sql like
+3. Cache
+  - Cached database-query
+  - Cached Object
+4. Async
+  - Precompute
+  - Event, signal
+
+# NO SQL
 
 - No SQL
   - Partition key: Unique distinct, uniform request random distributed, use to distribute
@@ -59,3 +76,7 @@ description: "System design"
       When a network partition failure happens should we decide to
       - Cancel the operation and thus decrease the availability but ensure consistency
       - Proceed with the operation and thus provide availability but risk inconsistency
+
+# Tools
+- [Capistrano](https://viblo.asia/p/su-dung-gem-capistrano-deploy-ung-dung-ruby-on-rails-len-server-aws-OeVKBOV0ZkW)
+- [RabbitMQ](https://www.rabbitmq.com/)
