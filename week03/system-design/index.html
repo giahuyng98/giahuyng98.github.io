@@ -39,6 +39,25 @@
 <li>Precompute</li>
 <li>Event, signal</li>
 </ol>
+<h2>Step 3: Tradeoff</h2>
+<ul>
+<li>
+<p>Performance vs scalability</p>
+<ul>
+<li>Performance problem: slow for single user</li>
+<li>Scalability problem: fast for single user, but slow under heavy load</li>
+</ul>
+</li>
+<li>
+<p>Latency vs throughput</p>
+<ul>
+<li>Latency: time to perform some action or to produce some result</li>
+<li>Throughtput: number of action or result per unit of time
+=> Maximal throughput with acceptable latency</li>
+</ul>
+</li>
+<li>Availability vs consistency</li>
+</ul>
 <h1>NO SQL</h1>
 <ul>
 <li>
@@ -81,7 +100,12 @@
 <p>When a network partition failure happens should we decide to</p>
 <ul>
 <li>Cancel the operation and thus decrease the availability but ensure consistency</li>
-<li>Proceed with the operation and thus provide availability but risk inconsistency</li>
+<li>
+<p>Proceed with the operation and thus provide availability but risk inconsistency</p>
+<blockquote>
+<p>In the absence of network failure – that is, when the distributed system is running normally – both availability and consistency can be satisfied. </p>
+</blockquote>
+</li>
 </ul>
 </li>
 </ul>
