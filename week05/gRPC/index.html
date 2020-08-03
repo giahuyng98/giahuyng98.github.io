@@ -3,7 +3,53 @@
 <h1>Protocol Buffers</h1>
 <ul>
 <li>Small payload</li>
-<li>Efficient parsing</li>
+<li>Efficient parsingo</li>
+<li>
+<p>Type:</p>
+<ul>
+<li>Number: Interger(<code class="language-text">int32/64 u/s/fixed32/64</code>), Float(<code class="language-text">float 32, double 64</code>)</li>
+<li>Boolean: <code class="language-text">bool</code></li>
+<li>String: <code class="language-text">string</code> utf8</li>
+<li>Bytes: <code class="language-text">bytes</code></li>
+</ul>
+</li>
+<li>
+<p>Tag:</p>
+<ul>
+<li>a last number 1 -> 2^29 - 1 exclude [19000, 19999]</li>
+<li>tag number [1, 15] space: 1 bytes</li>
+<li>tag number [16, 2047] space: 2 bytes</li>
+</ul>
+</li>
+<li>
+<p>Repeated fields:</p>
+<ul>
+<li>list or array</li>
+<li><code class="language-text">repeated</code> keyword</li>
+</ul>
+</li>
+<li>
+<p>Comment:</p>
+<ul>
+<li>C++ like comment format</li>
+</ul>
+</li>
+<li>
+<p>Default values:</p>
+<ul>
+<li>C++ like default value</li>
+</ul>
+</li>
+<li>
+<p>Enum</p>
+<ul>
+<li>Enum name {default = 0; …}</li>
+</ul>
+</li>
+<li>Composite type</li>
+<li>Nesting type/message</li>
+<li>Import type</li>
+<li>Package</li>
 </ul>
 <h1>gRPC Language</h1>
 <ul>
