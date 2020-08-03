@@ -9,7 +9,30 @@ implement a RPC framework use Google `Protocol Buffers`
 
 # Protocol Buffers
 - Small payload
-- Efficient parsing
+- Efficient parsingo
+
+- Type:
+  - Number: Interger(`int32/64 u/s/fixed32/64`), Float(`float 32, double 64`)
+  - Boolean: `bool`
+  - String: `string` utf8
+  - Bytes: `bytes`
+- Tag:
+  - a last number 1 -> 2^29 - 1 exclude [19000, 19999]
+  - tag number [1, 15] space: 1 bytes
+  - tag number [16, 2047] space: 2 bytes
+- Repeated fields:
+  - list or array
+  - `repeated` keyword
+- Comment:
+  - C++ like comment format
+- Default values:
+  - C++ like default value
+- Enum
+  - Enum name {default = 0; ...}
+- Composite type
+- Nesting type/message
+- Import type
+- Package
 
 # gRPC Language
 - GRPC-Java

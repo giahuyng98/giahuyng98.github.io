@@ -42,6 +42,16 @@ description: "System design"
   - Precompute
   - Event, signal
 
+## Step 3: Tradeoff
+- Performance vs scalability
+  - Performance problem: slow for single user
+  - Scalability problem: fast for single user, but slow under heavy load
+- Latency vs throughput
+  - Latency: time to perform some action or to produce some result
+  - Throughtput: number of action or result per unit of time
+  => Maximal throughput with acceptable latency
+- Availability vs consistency
+
 # NO SQL
 
 - No SQL
@@ -76,6 +86,7 @@ description: "System design"
       When a network partition failure happens should we decide to
       - Cancel the operation and thus decrease the availability but ensure consistency
       - Proceed with the operation and thus provide availability but risk inconsistency
+    > In the absence of network failure – that is, when the distributed system is running normally – both availability and consistency can be satisfied. 
 
 # Tools
 - [Capistrano](https://viblo.asia/p/su-dung-gem-capistrano-deploy-ung-dung-ruby-on-rails-len-server-aws-OeVKBOV0ZkW)
