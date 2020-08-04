@@ -5,6 +5,7 @@ description: "TODO LIST"
 ---
 
 1. Parallelism + Concurrency
+[Java ConcurrentMap](https://en.wikipedia.org/wiki/Java_ConcurrentMap)
 2. Database: Relational + NoSQL
    - sql ascii ii 92
    - ddl, dml
