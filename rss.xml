@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 04 Aug 2020 10:42:47 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Parallelism + Concurrency Database: Relational + NoSQL sql ascii ii 92 ddl, dml blah, blah redis Microservices Message queue producer…]]></description><link>https://giahuyng98.github.io/todo/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/todo/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ol&gt;
-&lt;li&gt;Parallelism + Concurrency&lt;/li&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 04 Aug 2020 10:48:59 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Parallelism + Concurrency
+Java ConcurrentMap Database: Relational + NoSQL sql ascii ii 92 ddl, dml blah, blah redis Microservices Message…]]></description><link>https://giahuyng98.github.io/todo/todo/</link><guid isPermaLink="false">https://giahuyng98.github.io/todo/todo/</guid><pubDate>Fri, 01 Jan 2021 00:00:00 GMT</pubDate><content:encoded>&lt;ol&gt;
+&lt;li&gt;Parallelism + Concurrency
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Java_ConcurrentMap&quot;&gt;Java ConcurrentMap&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Database: Relational + NoSQL&lt;/p&gt;
 &lt;ul&gt;
@@ -14,6 +16,7 @@
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;ul&gt;
+&lt;li&gt;SkipList&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://howtodoinjava.com/java/generics/java-generics-what-is-pecs-producer-extends-consumer-super/&quot;&gt;producer extends consumer super&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://medium.com/@amsokol.com/tutorial-how-to-develop-go-grpc-microservice-with-http-rest-endpoint-middleware-kubernetes-daebb36a97e9&quot;&gt;Microservice&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.haproxy.org/&quot;&gt;HAProxy&lt;/a&gt;&lt;/li&gt;
