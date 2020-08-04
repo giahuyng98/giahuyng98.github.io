@@ -4,6 +4,20 @@ date: "2021-01-01T00:00:00.000Z"
 description: "TODO LIST"
 ---
 
+1. Parallelism + Concurrency
+2. Database: Relational + NoSQL
+   - sql ascii ii 92
+   - ddl, dml
+   - blah, blah
+   - redis
+
+3. Microservices
+4. Message queue
+
+---
+
+- SkipList
+- [producer extends consumer super](https://howtodoinjava.com/java/generics/java-generics-what-is-pecs-producer-extends-consumer-super/)
 - [Microservice](https://medium.com/@amsokol.com/tutorial-how-to-develop-go-grpc-microservice-with-http-rest-endpoint-middleware-kubernetes-daebb36a97e9)
 - [HAProxy](http://www.haproxy.org/)
 - [Snowflake](https://blog.twitter.com/engineering/en_us/a/2010/announcing-snowflake.html)
