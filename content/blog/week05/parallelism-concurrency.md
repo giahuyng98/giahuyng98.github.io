@@ -265,3 +265,4 @@ public class DataRace {
 [https://www.baeldung.com/java-thread-safety](https://www.baeldung.com/java-thread-safety)
 [https://github.com/romix/java-concurrent-hash-trie-map/tree/master/src/test/java/com/romix/scala/collection/concurrent](https://github.com/romix/java-concurrent-hash-trie-map/tree/master/src/test/java/com/romix/scala/collection/concurrent)
 [http://erlang.org/documentation/doc-5.6/pdf/design_principles.pdf](http://erlang.org/documentation/doc-5.6/pdf/design_principles.pdf)
+[https://stackoverflow.com/a/5964238/13285440](https://stackoverflow.com/a/5964238/13285440)

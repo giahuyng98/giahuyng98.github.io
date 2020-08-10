@@ -4,6 +4,12 @@ date: "2021-01-01T00:00:00.000Z"
 description: "TODO LIST"
 ---
 
+[Spring Cloud](https://dzone.com/articles/microservice-architecture-with-spring-cloud-and-do)
+[Spring Cloud 2](https://dev.to/piczmar_0/spring-cloud-step-by-step-part-1-1670)
+[Piggy metrics](https://github.com/sqshq/PiggyMetrics)
+[Api design](https://apiary.io/)
+
+---
 1. Parallelism + Concurrency
 [Java ConcurrentMap](https://en.wikipedia.org/wiki/Java_ConcurrentMap)
 2. Database: Relational + NoSQL
