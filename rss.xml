@@ -1,4 +1,528 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 10 Aug 2020 16:22:34 GMT</lastBuildDate><item><title><![CDATA[TODO]]></title><description><![CDATA[Spring Cloud
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 02 Mar 2021 03:33:02 GMT</lastBuildDate><item><title><![CDATA[Optimize MySQL]]></title><description><![CDATA[Default order FROM/JOIN WHERE GROUP BY HAVING WINDOW FUNCTION SELECT DISTINCT UNION ORDER BY LIMIT/OFFSET Optimize SELECT Index Isolate and…]]></description><link>https://giahuyng98.github.io/mysql/mysql/</link><guid isPermaLink="false">https://giahuyng98.github.io/mysql/mysql/</guid><pubDate>Wed, 24 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Default order&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;FROM/JOIN&lt;/li&gt;
+&lt;li&gt;WHERE&lt;/li&gt;
+&lt;li&gt;GROUP BY&lt;/li&gt;
+&lt;li&gt;HAVING&lt;/li&gt;
+&lt;li&gt;WINDOW FUNCTION&lt;/li&gt;
+&lt;li&gt;SELECT&lt;/li&gt;
+&lt;li&gt;DISTINCT&lt;/li&gt;
+&lt;li&gt;UNION&lt;/li&gt;
+&lt;li&gt;ORDER BY&lt;/li&gt;
+&lt;li&gt;LIMIT/OFFSET&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Optimize SELECT&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Index&lt;/li&gt;
+&lt;li&gt;Isolate and tune part of the query&lt;/li&gt;
+&lt;li&gt;Minimize/avoid full table scan&lt;/li&gt;
+&lt;li&gt;ANALYZE TABLE&lt;/li&gt;
+&lt;li&gt;Tuning, indexing, configuration that are specific to the storage engine&lt;/li&gt;
+&lt;li&gt;Optimize single-query transactions for InnoDB&lt;/li&gt;
+&lt;li&gt;Avoid make queries too hard to understand&lt;/li&gt;
+&lt;li&gt;EXPLAIN&lt;/li&gt;
+&lt;li&gt;Size/properties cache&lt;/li&gt;
+&lt;li&gt;Deal with lock&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;WHERE&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;MySQL automatic optimize:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Removal of unnecessary parentheses&lt;/li&gt;
+&lt;li&gt;Constant folding&lt;/li&gt;
+&lt;li&gt;Constant condition removal&lt;/li&gt;
+&lt;li&gt;Constant expressions used by indexes are evaluated only once&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;COUNT(*)&lt;/code&gt; on single table without WHERE return directly MyISAM, MEMORY&lt;/li&gt;
+&lt;li&gt;Early detection invalid constant expressions&lt;/li&gt;
+&lt;li&gt;HAVING is merged with WHERE if not using GROUP BY or aggeregate functions&lt;/li&gt;
+&lt;li&gt;Each table in join, a simple WHERE =&gt; a fast WHERE&lt;/li&gt;
+&lt;li&gt;Constant tables are read first: (0, 1) record/ WHERE on PRIMARY KEY, UNIQUE INDEX constant expression, NOT NULL&lt;/li&gt;
+&lt;li&gt;index may not be used over full-scan&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;in some case, my sql can read rows from the index-tree, not data file, (numeric index)&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;MySQL&lt;/h1&gt;
+&lt;p&gt;[Clients] =&gt; [Connection/Thread handling, Parser, Cache, Optimizer] =&gt; [Storage engine]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each connection get a thread&lt;/li&gt;
+&lt;li&gt;Server caches threads&lt;/li&gt;
+&lt;li&gt;5.5 support thread pooling plugins&lt;/li&gt;
+&lt;li&gt;Queries =&gt; [parsed tree] =&gt; [optimize]&lt;/li&gt;
+&lt;li&gt;Queries =&gt; [cache] =&gt;&lt;/li&gt;
+&lt;li&gt;Concurrency: shared lock &amp;#x26; exclusive locks/ read lock &amp;#x26; write lock&lt;/li&gt;
+&lt;li&gt;Table lock: write locks have higher prority than read locks&lt;/li&gt;
+&lt;li&gt;Row lock: &lt;/li&gt;
+&lt;li&gt;alter table: mysql use its own lock, not storage engine&lt;/li&gt;
+&lt;li&gt;Multiversion Concurrency control&lt;/li&gt;
+&lt;li&gt;!= row locking&lt;/li&gt;
+&lt;li&gt;use row-level locking&lt;/li&gt;
+&lt;li&gt;work with read commited &amp;#x26; repeatable read&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;InnoDB&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ACID, MVCC&lt;/li&gt;
+&lt;li&gt;table space&lt;/li&gt;
+&lt;li&gt;index and data seperate files&lt;/li&gt;
+&lt;li&gt;clustered index&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;secondary indexes contain the primary key column&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;optimization: predictive read ahead, adaptive hash index, insert buffer&lt;/li&gt;
+&lt;li&gt;hot backup&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Match against&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;match(column) against (‘str1,str2’)&lt;/li&gt;
+&lt;li&gt;match(column) against (‘str1,str2’ in natural language mode)&lt;/li&gt;
+&lt;li&gt;ft&lt;em&gt;min&lt;/em&gt;word_len = 3&lt;/li&gt;
+&lt;li&gt;stop word&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Optimizing schema&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Smaller usually better&lt;/li&gt;
+&lt;li&gt;Simple is good&lt;/li&gt;
+&lt;li&gt;Avoid NULL if possible (exeptions: InnoDBstores NULL with a single bit)&lt;/li&gt;
+&lt;li&gt;computations generally use 64-bit BIGINT integers, even on 32-bit architectures&lt;/li&gt;
+&lt;li&gt;DECIMAL&lt;/li&gt;
+&lt;li&gt;[more…]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Index&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;InnoDB use B+Trees&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type of queries that can use B-tree index:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Match full&lt;/li&gt;
+&lt;li&gt;Match a left most prefix&lt;/li&gt;
+&lt;li&gt;Match a range of value&lt;/li&gt;
+&lt;li&gt;Match part exactly - part range&lt;/li&gt;
+&lt;li&gt;Index only queries &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;indexes help &lt;code class=&quot;language-text&quot;&gt;ORDER BY&lt;/code&gt; clause&lt;/li&gt;
+&lt;li&gt;Hash indexes&lt;/li&gt;
+&lt;li&gt;MEMORY is the only engine that explicit support hash index&lt;/li&gt;
+&lt;li&gt;Collison resolve by linked list&lt;/li&gt;
+&lt;li&gt;Limitation…(can use for sorting, index only queries, partical matching, equality only comparisons, collison performance lookup and maintain)&lt;/li&gt;
+&lt;li&gt;InnoDB adaptive hash indexes&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Build own hash index&lt;/em&gt;: create separate column (use trigger, …)&lt;/li&gt;
+&lt;li&gt;CRC32(‘str’), FNV64()&lt;/li&gt;
+&lt;li&gt;Birthday paradox&lt;/li&gt;
+&lt;li&gt;Spatial (R-Tree) indexes&lt;/li&gt;
+&lt;li&gt;Fulltext indexes&lt;/li&gt;
+&lt;li&gt;Stopwords&lt;/li&gt;
+&lt;li&gt;Stemming&lt;/li&gt;
+&lt;li&gt;Plurals&lt;/li&gt;
+&lt;li&gt;Boolean searching&lt;/li&gt;
+&lt;li&gt;TokuDB use fractal tree indexes&lt;/li&gt;
+&lt;li&gt;ScaleDB use Patricia tries…&lt;/li&gt;
+&lt;li&gt;Indexes benefits&lt;/li&gt;
+&lt;li&gt;Reduce amount of data the server has to examine&lt;/li&gt;
+&lt;li&gt;Help server avoid sorting and temporary tables&lt;/li&gt;
+&lt;li&gt;Turn random IO to sequential IO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;- Quickly navigate
+- Order, group by optimize
+- Relative value close together
+- Index store copy of a value -&amp;gt; index only queries&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Three-star index&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;1 star&lt;/strong&gt; if it place relevent row adjacent to each other&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2 star&lt;/strong&gt; if its rows are sort in the order the query need&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;3 star&lt;/strong&gt; if it contains all the column needed for the query&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;=&gt; Small table: often more effective to read all the rows
+=&gt; Medium to large table: good to use
+=&gt; Enormous tables: may not good maintaince indexes, partitioning&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;use sumary table&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Indexing strategies&lt;/li&gt;
+&lt;li&gt;Isolating the column (&lt;code class=&quot;language-text&quot;&gt;WHERE idx_col + 1 &amp;lt; 100&lt;/code&gt; =&gt; &lt;code class=&quot;language-text&quot;&gt;WHERE idx_col &amp;lt; 100 - 1&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Prefix Index: long enough to give good selective, short enough to save space, &lt;em&gt;Selectivity&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Multicolumn indexes: index merging optimization&lt;/li&gt;
+&lt;li&gt;Place ordering: most selective column first less important than avoiding I/O and sorting&lt;/li&gt;
+&lt;li&gt;Correct order depends on the queries that will use the index&lt;/li&gt;
+&lt;li&gt;Clustered indexes&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Advantages: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Related data close together.&lt;/li&gt;
+&lt;li&gt;Data access is fast&lt;/li&gt;
+&lt;li&gt;Queries that use covering indexes can use primary key values contained at the leaf nodes???&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Disavantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Improve performance only on I/O-bound workload&lt;/li&gt;
+&lt;li&gt;Insert speed heavily on insertion order.&lt;/li&gt;
+&lt;li&gt;Update is expensive&lt;/li&gt;
+&lt;li&gt;page splits: row must be placed into a page that is full of data&lt;/li&gt;
+&lt;li&gt;can be slower for full table scan: page split&lt;/li&gt;
+&lt;li&gt;Secondary (nonclustered) index can be large (contain primary key)&lt;/li&gt;
+&lt;li&gt;Secondary index accesses require 2 index lookup&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;MyISAM data layout: 1 Btree per 1 index, ref only&lt;/li&gt;
+&lt;li&gt;InnoDB data layout: Clustered, Node{PK, TranID, Rollback Pointer, Columns…}, leaf node secondary index contain primary key&lt;/li&gt;
+&lt;li&gt;Inserting rows in primary key order with InnoDB: mostly benefic but for high concurrency workloads suffer from hot spot primary insert lock,
+AUTO&lt;em&gt;INCREMENT innodb&lt;/em&gt;autoinc&lt;em&gt;lock&lt;/em&gt;mode,&lt;/li&gt;
+&lt;li&gt;Covering indexes&lt;/li&gt;
+&lt;li&gt;An index that contains (covers) all the data needed to satisfy query is called a covering index&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;EXPLAIN SELECT * FROM products WHERE actor=&amp;#39;SEAN CARREY&amp;#39; AND title like &amp;#39;%APOLLO%&amp;#39;\G
+- Index can&amp;#39;t cover this query: 1-select * but index (actor, title), 2-mysql can&amp;#39;t perform LIKE operation in the index, leading wildcard
+EXPLAIN SELECT *  FROM products    JOIN (    SELECT prod_id    FROM products    WHERE actor=&amp;#39;SEAN CARREY&amp;#39; AND title LIKE &amp;#39;%APOLLO%&amp;#39;    ) AS t1 ON (t1.prod_id=products.prod_id)\G&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;** indexcondition pushdown mysql 5.6&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using Index Scans for Sorts&lt;/li&gt;
+&lt;li&gt;Mysql has 2 ways to produce ordered results: 1-sort operator, 2-index (EXPLAIN type=index)&lt;/li&gt;
+&lt;li&gt;Scan index is fast, but if it’s not an covering index =&gt; random I/O&lt;/li&gt;
+&lt;li&gt;Ordering work only when the index’s order is exactly the same as the ORDER BY&lt;/li&gt;
+&lt;li&gt;And in multiple join table ORDER BY colums in the first table&lt;/li&gt;
+&lt;li&gt;Packed (Prefix compressed) indexes&lt;/li&gt;
+&lt;li&gt;Used by MyISAM&lt;/li&gt;
+&lt;li&gt;Allow more index to fit in memory&lt;/li&gt;
+&lt;li&gt;Pack string (even integer)&lt;/li&gt;
+&lt;li&gt;Store 1 full lenght + others suffix&lt;/li&gt;
+&lt;li&gt;Can’t use binary search, sequencial scaning only&lt;/li&gt;
+&lt;li&gt;1/10 size of the disk&lt;/li&gt;
+&lt;li&gt;PACK_KEYS&lt;/li&gt;
+&lt;li&gt;Duplicate indexes, redundant indexes&lt;/li&gt;
+&lt;li&gt;Duplicate indexes should be remove&lt;/li&gt;
+&lt;li&gt;Redundant indexes may be need for performance reasons.&lt;/li&gt;
+&lt;li&gt;In most cases should extend existing indexes&lt;/li&gt;
+&lt;li&gt;Identify Duplicate/Redundant indexes =&gt; 1-INFORMATION_SCHEMA, 2-common-schema framework, 3-pt-duplicate-key-checker&lt;/li&gt;
+&lt;li&gt;index (A, ID) =&gt;  WHERE A = 5 ORDER BY ID&lt;/li&gt;
+&lt;li&gt;index (A, B, ID) =&gt; not so good =&gt; filesort&lt;/li&gt;
+&lt;li&gt;Unused indexes&lt;/li&gt;
+&lt;li&gt;INFORMATION&lt;em&gt;SCHEMA.INDEX&lt;/em&gt;STATISTICS&lt;/li&gt;
+&lt;li&gt;Tooling&lt;/li&gt;
+&lt;li&gt;Indexes and locking&lt;/li&gt;
+&lt;li&gt;Indexes permit queries to lock fewer rows&lt;/li&gt;
+&lt;li&gt;But this only works if InnoDB can filter out the undesired rows at &lt;em&gt;the storage engine level&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;EXPLAIN SELECT actor_id FROM sakila.actor 
+WHERE actor_id &amp;lt; 5 AND actor_id &amp;lt;&amp;gt; 1 FOR UPDATE;
+
+lock actor_id 1 =&amp;gt; 5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;can be worse when InnoDB can’t use index to find and lock a row, full table scan =&gt; locks every row&lt;/li&gt;
+&lt;li&gt;Case study&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;we need to design an online dating site with user profiles that have manydifferent columns, such as 
+the user’s country, state/region, city, sex, age, eye color, andso on. 
+The site must support searching the profiles by various combinations of theseproperties. 
+It must also let the user sort and limit results by the last time the profile’sowner was online, 
+ratings from other members, etc. How do we design indexes for suchcomplex requirements?&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Index base sorting OR post retrieval sorting&lt;/li&gt;
+&lt;li&gt;Support many kind of filtering&lt;/li&gt;
+&lt;li&gt;Columns have many distinct values VS columns appear most often in WHERE clause&lt;/li&gt;
+&lt;li&gt;(sex, country): 1-sex appear almost every queries, 2- &lt;code class=&quot;language-text&quot;&gt;AND SEX IN(&amp;#39;m&amp;#39;, &amp;#39;f&amp;#39;)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Combine indexes &lt;/li&gt;
+&lt;li&gt;Range index shoule be at the end of composite index, or IN (a,b,c,d…)&lt;/li&gt;
+&lt;li&gt;Avoid multiple range conditions&lt;/li&gt;
+&lt;li&gt;IN()&lt;/li&gt;
+&lt;li&gt;Precompute column last_active =&gt; active{0, 1}&lt;/li&gt;
+&lt;li&gt;Separate indexes&lt;/li&gt;
+&lt;li&gt;Optimize sort&lt;/li&gt;
+&lt;li&gt;index on (sex, rating)&lt;/li&gt;
+&lt;li&gt;SELECT&lt;cols&gt;FROM profiles WHERE sex=‘M’ ORDER BY rating LIMIT 10;&lt;/li&gt;
+&lt;li&gt;Slow SELECT&lt;cols&gt;FROM profiles WHERE sex=‘M’ ORDER BY rating LIMIT 100000, 10;&lt;/li&gt;
+&lt;li&gt;=&gt; denormalizing, precomputing, caching&lt;/li&gt;
+&lt;li&gt;Deferred join:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT&amp;lt;cols&amp;gt;FROM profiles INNER JOIN (    
+  SELECT&amp;lt;primary key cols&amp;gt;FROM profiles 
+  WHERE x.sex=&amp;#39;M&amp;#39; ORDER BY rating LIMIT 100000, 10 
+) AS x USING(&amp;lt;primary key cols&amp;gt;);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Index and Table Maintenance&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Finding and Repairing Table Corruption&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;CHECK TABLE&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;ALTER TABLE innodb_tbl ENGINE=INNODB&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;myi-samchk&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;innodb_force_recovery&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Percona InnoDB Data Recovery Toolkit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Updating Index Statistics&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;records_in_range()&lt;/code&gt;:  returns the number of records in that range&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;info()&lt;/code&gt;: return various types of data, including indexcardinality (approximately how many records there are for each key value)&lt;/li&gt;
+&lt;li&gt;Cost base optimizer, statistics ANALYZE TABLE&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;SHOW INDEX FROM tbl&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Reducing Index and Data Fragmentation&lt;/li&gt;
+&lt;li&gt;Sumary
+`&lt;/li&gt;
+&lt;li&gt;Single-row access is slow, especially on spindle-based storage. (Solid-state disksare faster at random I/O, but this point remains true.)
+If the server reads a blockof data from storage and then accesses only one row in it, it wastes a lot of work.It’s much better to read in a
+block that contains lots of rows you need. Use indexesto create locality of reference for improved efficiency.&lt;/li&gt;
+&lt;li&gt;Accessing ranges of rows in order is fast, for two reasons. First, sequential I/Odoesn’t require disk seeks, so it is faster than random I/O,
+especially on spindle-based storage. Secondly, if the server can read the data in the order you need it, itdoesn’t need to perform any follow-up
+work to sort it, and GROUP BY queries don’tneed to sort and group rows together to compute aggregates over them.&lt;/li&gt;
+&lt;li&gt;Index-only access is fast. If an index contains all the columns that the query needs,the storage engine doesn’t need to find the other columns
+by looking up rows inthe table. This avoids lots of single-row access, which as we know from point 1above is slow.
+`&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Optimizing select&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Only asking for what you really need (rows, cols), unless you know what you are doing, and becareful with repeated fetch&lt;/li&gt;
+&lt;li&gt;Reponse time&lt;/li&gt;
+&lt;li&gt;Rows examined&lt;/li&gt;
+&lt;li&gt;Rows returned&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rows examined: WHERE clause can apply 3 ways from best to worst&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Index lookup to eliminate non matching rows, storage engine layer&lt;/li&gt;
+&lt;li&gt;Use a covering index &lt;code class=&quot;language-text&quot;&gt;Extra: Using Index&lt;/code&gt; to avoid row accesses and filter out non matching rows, server layer&lt;/li&gt;
+&lt;li&gt;Retrieve -&gt; filter rows , server layer&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT actor_id, COUNT(*) FROM sakila.film_actor GROUP BY actor_id;&lt;/code&gt; An index can’t reduce the number of rows examined for a query like this one&lt;/li&gt;
+&lt;li&gt;If a huge number of rows were examined to produce relatively few rows in the result: 1-use covering indexes, 2-change the schema (sumary table), 3-Rewrite a complicate query&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Whether it’s preferable to break up a complexquery into several simpler queries&lt;/li&gt;
+&lt;li&gt;Chopping up a query&lt;/li&gt;
+&lt;li&gt;From: &lt;code class=&quot;language-text&quot;&gt;DELETE FROM messages WHERE created &amp;lt; DATE_SUB(NOW(),INTERVAL 3 MONTH);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;To: &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;rows_affected = 0
+do {
+  rows_affected = do_query(&amp;quot;DELETE FROM messages WHERE created &amp;lt; DATE_SUB(NOW(),INTERVAL 3 MONTH) LIMIT 10000&amp;quot;)
+} while rows_affected &amp;gt; 0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Join Decomposition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT * FROM tag 
+JOIN tag_post ON tag_post.tag_id=tag.id
+JOIN post ON tag_post.post_id=post.id
+WHERE tag.tag=&amp;#39;mysql&amp;#39;;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;to:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT * FROM  tag WHERE tag=&amp;#39;mysql&amp;#39;;
+SELECT * FROM  tag_post WHERE tag_id=1234;
+SELECT * FROM  post WHERE  post.id in (123,456,567,9098,8904);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;performance advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;caching can be more efficient. &lt;/li&gt;
+&lt;li&gt;executing the queries individually can sometimes reduce lock contention.&lt;/li&gt;
+&lt;li&gt;doing joins in the application makes it easier to scale the database by placing tables on different servers&lt;/li&gt;
+&lt;li&gt;the queries themselves can be more efficient. In this example,
+using an IN() list instead of a join lets MySQL sort row IDs and retrieve rows more optimally than might be possible with a join&lt;/li&gt;
+&lt;li&gt;reduce redundant row accesses&lt;/li&gt;
+&lt;li&gt;manual hash join&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Query execution&lt;/li&gt;
+&lt;li&gt;Client send sql statement&lt;/li&gt;
+&lt;li&gt;Server check cache, if hit return result&lt;/li&gt;
+&lt;li&gt;Server parses, preprocessing, and optimize the SQL into a query execition plan&lt;/li&gt;
+&lt;li&gt;Query execution engine executes the plan by making calls to the storage engine API&lt;/li&gt;
+&lt;li&gt;Server send server to the client&lt;/li&gt;
+&lt;li&gt;Client/Server protocol&lt;/li&gt;
+&lt;li&gt;half duplex: client (or server) must receive (or sent) all data before sent (or receive) new one, &lt;code class=&quot;language-text&quot;&gt;LIMIT&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;max_allowed_packet&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;client fetchs all the result set and store in memory or fetchs invidiual row, important for server: locking, free resource…&lt;/li&gt;
+&lt;li&gt;Query state&lt;/li&gt;
+&lt;li&gt;Sleep&lt;/li&gt;
+&lt;li&gt;Query&lt;/li&gt;
+&lt;li&gt;Locked&lt;/li&gt;
+&lt;li&gt;Analyzing and statistics&lt;/li&gt;
+&lt;li&gt;Copying to tmp table [on disk]&lt;/li&gt;
+&lt;li&gt;Sorting result&lt;/li&gt;
+&lt;li&gt;Sending data: between states, or to the client&lt;/li&gt;
+&lt;li&gt;Query cache: case sensitive hash lookup, =&gt; check privileges =&gt; return&lt;/li&gt;
+&lt;li&gt;Parser and preprocessor:&lt;/li&gt;
+&lt;li&gt;Parser parse sql syntax =&gt; parse tree&lt;/li&gt;
+&lt;li&gt;Preprocessor check parse tree: table exists, column exists, alias…&lt;/li&gt;
+&lt;li&gt;Preprocessor check privileges&lt;/li&gt;
+&lt;li&gt;Query optimizer&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Last_query_cost&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;static/dynamic&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;types of optimization:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reordering joins&lt;/li&gt;
+&lt;li&gt;Converting outer join to inner join&lt;/li&gt;
+&lt;li&gt;Applying algebraic equivalence rules&lt;/li&gt;
+&lt;li&gt;COUNT(), MIN(), MAX() optimizations&lt;/li&gt;
+&lt;li&gt;Evaluating and reducing constant expressions&lt;/li&gt;
+&lt;li&gt;Covering indexes&lt;/li&gt;
+&lt;li&gt;Subquery optimization&lt;/li&gt;
+&lt;li&gt;Early termination&lt;/li&gt;
+&lt;li&gt;Equality propagation&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;IN()&lt;/code&gt; list comparisons: mysql sorts the list =&gt; O(logn)&lt;/li&gt;
+&lt;li&gt;And many more…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;MySQL’s join execution strategy&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;every query a join — not just every query that matches rows from two tables, but every query, period&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT tbl1.col1, tbl2.col2 
+FROM tbl1 INNER JOIN tbl2 USING(col3) 
+WHERE tbl1.col1 IN(5,6);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;outer_iter = iterator over tbl1 where col1 IN(5,6)
+outer_row  = outer_iter.next
+while outer_row   
+  inner_iter = iterator over tbl2 where col3 = outer_row.col3   
+  inner_row  = inner_iter.next   
+  while inner_row      
+    output [ outer_row.col1, inner_row.col2 ]      
+    inner_row = inner_iter.next   
+  end   
+  outer_row = outer_iter.next
+end&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Execution plan&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;EXPLAIN EXTENDED&lt;/code&gt; + &lt;code class=&quot;language-text&quot;&gt;SHOW WARINGS&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;STRAIGHT_JOIN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;optimizer_search_depth&lt;/code&gt; variable&lt;/li&gt;
+&lt;li&gt;n-factorial combinations of join orders to examine&lt;/li&gt;
+&lt;li&gt;MySQL has many heuristics, to speed up the optimization stage&lt;/li&gt;
+&lt;li&gt;Sometime queries can be reordered (LEFT JOIN, correlated sub queries), reduce search space&lt;/li&gt;
+&lt;li&gt;Sort optimizations&lt;/li&gt;
+&lt;li&gt;filesort: quick sort or quick sort + merge from disk if data won’t fit sort buffer&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;2 filesort algorithms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Two passes: sort the pointer than read data&lt;/li&gt;
+&lt;li&gt;Single pass: read all column needed =&gt; sort =&gt; output &lt;code class=&quot;language-text&quot;&gt;max_length_for_sort_data&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;allocates fixed-size record for each tuple&lt;/li&gt;
+&lt;li&gt;sort a join: order by (cols from tb1) =&gt; sort then join &lt;code class=&quot;language-text&quot;&gt;Using filesort”&lt;/code&gt; otherwise &lt;code class=&quot;language-text&quot;&gt;Using temporary; Using filesort&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;mysql 5.6 &lt;code class=&quot;language-text&quot;&gt;LIMIT&lt;/code&gt; sort optimize&lt;/li&gt;
+&lt;li&gt;The Query Execution Engine (QXE)&lt;/li&gt;
+&lt;li&gt;optimizing state output query execution plan =&gt; QXE (data structure, not byte-code)&lt;/li&gt;
+&lt;li&gt;handler API&lt;/li&gt;
+&lt;li&gt;Return data to the client&lt;/li&gt;
+&lt;li&gt;If query is cacheable cache it&lt;/li&gt;
+&lt;li&gt;As soon as mysql processes the last table and generates 1 row =&gt; send data to client&lt;/li&gt;
+&lt;li&gt;Each row in the result set is sent in a separate packet mysql client/server protocol&lt;/li&gt;
+&lt;li&gt;Subquery vs join&lt;/li&gt;
+&lt;li&gt;GROUP_CONCAT&lt;/li&gt;
+&lt;li&gt;IN vs EXISTS&lt;/li&gt;
+&lt;li&gt;Measure&lt;/li&gt;
+&lt;li&gt;UNION LIMIT&lt;/li&gt;
+&lt;li&gt;Index Merge Optimizations&lt;/li&gt;
+&lt;li&gt;Equality Propagation: e.g: IN list WHERE, ON, USING the optimizer will share the list by copying =&gt; can be slow&lt;/li&gt;
+&lt;li&gt;Parallel Execution: not support, 8.0.14 limited support&lt;/li&gt;
+&lt;li&gt;Hash joins:&lt;/li&gt;
+&lt;li&gt;Mysql 5.6 not support only nested-loop join, support in MySql 8, mariadb 5.3, 5.5 support BNL, BNLH, BKA, BKAH.&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;index condition pushdown&lt;/code&gt; loose index scan&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;MIN()&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;MAX()&lt;/code&gt; optimize: &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT MIN(actor_id) FROM sakila.actor WHERE first_name = &amp;#39;PENELOPE&amp;#39;; 
+scan entire table&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT actor_id FROM sakila.actor USE INDEX(PRIMARY) WHERE first_name = &amp;#39;PENELOPE&amp;#39; LIMIT 1;
+fix&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;SELECT and UPDATE on the Same Table…&lt;/li&gt;
+&lt;li&gt;Query Optimizer Hints&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;HIGH_PRIORITY and LOW_PRIORITY
+DELAYED
+STRAIGHT_JOIN
+SQL_SMALL_RESULT and SQL_BIG_RESULT
+SQL_BUFFER_RESULT
+SQL_CACHE and SQL_NO_CACHE
+SQL_CALC_FOUND_ROWS
+FOR UPDATE and LOCK IN SHARE MODE
+USE INDEX, IGNORE INDEX, and FORCE INDEX
+optimizer_search_depth
+optimizer_prune_level
+optimizer_switch&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;optimizing count&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT COUNT(*) FROM world.City WHERE ID &amp;gt; 5;
+to
+SELECT (SELECT COUNT(*) FROM world.City) - COUNT(*)
+FROM world.City WHERE ID &amp;lt;= 5;
+
+count multiple column
+SELECT SUM(IF(color = &amp;#39;blue&amp;#39;, 1, 0)) AS blue,SUM(IF(color = &amp;#39;red&amp;#39;, 1, 0)) AS red FROM items
+or 
+SELECT COUNT(color = &amp;#39;blue&amp;#39; OR NULL) AS blue, COUNT(color = &amp;#39;red&amp;#39; OR NULL) AS red FROM items;
+- using approximation
+- covering index
+- summary tables
+- cache &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;optimizing join&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;- ON, USING: use indexes
+- GROUP BY, ORDER BY expression refers only to column from single table&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;optimizing subqueries&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;- mysql &amp;lt; 5.6 join wherever possible
+- 5.6+ or mariadb measure it?&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;optimizing group by, distinct&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;use indexes&lt;/li&gt;
+&lt;li&gt;when mysql can’t use indexes: 1-filesort, 2-temporary table&lt;/li&gt;
+&lt;li&gt;group by identifier rather than by the value (group join value from lookup table)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT actor.first_name, actor.last_name, COUNT(*)  
+FROM sakila.film_actor    
+INNER JOIN sakila.actor USING(actor_id)    
+GROUP BY actor.first_name, actor.last_name;
+to:
+SELECT actor.first_name, actor.last_name, COUNT(*)    
+FROM sakila.film_actor    
+INNER JOIN sakila.actor USING(actor_id)    
+GROUP BY film_actor.actor_id; // film.actor_id
+
+about:
+SELECT actor.first_name, actor.last_name, c.cnt    
+FROM sakila.actor    
+INNER JOIN (    
+SELECT actor_id, COUNT(*) AS cnt    
+FROM sakila.film_actor    
+GROUP BY actor_id) AS c USING(actor_id) ;
+creating and filling the temporary table required for the subquery maybe high compared to the cost of fudging pure relational theory a little bit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;temporary table created by the subquery has no indexes&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Optimizing GROUP BY WITH ROLLUP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Optimizing LIMIT and OFFSET&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;deferred join&lt;/li&gt;
+&lt;li&gt;precompute &lt;code class=&quot;language-text&quot;&gt;SELECT film_id, description FROM sakila.film    -&amp;gt; WHERE position BETWEEN 50 AND 54 ORDER BY position;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;If you use a sort of bookmark to remember the position of the last row you fetched,
+you can generate the next set of rows by starting from that position instead of using an OFFSET&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;SELECT * FROM sakila.rental    
+ORDER BY rental_id DESC LIMIT 20;
+return 16049 through 16030
+=&amp;gt;
+SELECT * FROM sakila.rental    
+WHERE rental_id &amp;lt; 16030    
+ORDER BY rental_id DESC LIMIT 20;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Use Sphinx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Optimizing UNION&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MySQL always executes UNION queries by creating a temporary table and filling it withthe UNION results&lt;/li&gt;
+&lt;li&gt;always  use UNION  ALL,  unless  you  need  the  server  to  eliminateduplicate rows&lt;/li&gt;
+&lt;li&gt;the ALL keyword doesn’t eliminate the temporary table&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Static Query Analysis&lt;/em&gt;: Percona Toolkit &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using User-Defined Variables&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[TODO]]></title><description><![CDATA[Spring Cloud
 Spring Cloud 2
 Piggy metrics
 Api design Parallelism + Concurrency
@@ -1169,7 +1693,76 @@ mmap&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://viblo.asia/p/su-dung-gem-capistrano-deploy-ung-dung-ruby-on-rails-len-server-aws-OeVKBOV0ZkW&quot;&gt;Capistrano&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.rabbitmq.com/&quot;&gt;RabbitMQ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Awk]]></title><description><![CDATA[awk - pattern scanning and text processing language F value:  sets the field separator, FS, to value v var=value assigns value to program…]]></description><link>https://giahuyng98.github.io/week02/awk/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/awk/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;awk - pattern scanning and text processing language&lt;/h1&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Git Flow]]></title><description><![CDATA[Git Flow vs Git Git flow  
+add some configuration at .git/config  - Start a new feature  - Finish up a feature  - Publish a feature…]]></description><link>https://giahuyng98.github.io/week02/git-flow/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/git-flow/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Git Flow vs Git&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://danielkummer.github.io/git-flow-cheatsheet/index.html&quot;&gt;Git flow&lt;/a&gt; &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow init&lt;/code&gt;
+add some configuration at .git/config&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;file&quot;&gt;&lt;pre class=&quot;language-file&quot;&gt;&lt;code class=&quot;language-file&quot;&gt;/ .git/config
+...
+[gitflow &amp;quot;branch&amp;quot;]
+  master = &amp;lt;set master branch&amp;gt;
+  develop = &amp;lt;set develop branch&amp;gt;
+[gitflow &amp;quot;prefix&amp;quot;]
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature start MYFEATURE&lt;/code&gt; - Start a new feature&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b feature/MYFEATURE develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature finish MYFEATURE&lt;/code&gt; - Finish up a feature&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff feature/MYFEATURE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d feature/MYFEATURE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature publish MYFEATURE&lt;/code&gt; - Publish a feature&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout feature/MYFEATURE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature pull origin MYFEATURE&lt;/code&gt; - Getting a published feature&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout feature/MYFEATURE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; pull&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release start RELEASE [BASE]&lt;/code&gt; - Start a release&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b release/RELEASE develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release publish RELEASE&lt;/code&gt; - Publish a release&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b release/RELEASE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push -u origin release/RELEASE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release finish RELEASE&lt;/code&gt; - Finish up a release&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Merges the release branch back into &apos;master&apos;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout master
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff release/RELEASE
+&lt;span class=&quot;token comment&quot;&gt;# Tags the release with its name&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; tag RELEASE
+&lt;span class=&quot;token comment&quot;&gt;# Back-merges the release into &apos;develop&apos;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff release/RELEASE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d release/RELEASE
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push origin --tags&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow hotfix start VERSION [BASENAME]&lt;/code&gt; - Hotfix start&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b hotfix/VERSION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow hotfix finish VERSION&lt;/code&gt; - Finish a hotfix&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout master
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff hotfix/VERSION
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff hotfix/VERSION
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d hotfix/VERSION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[Awk]]></title><description><![CDATA[awk - pattern scanning and text processing language F value:  sets the field separator, FS, to value v var=value assigns value to program…]]></description><link>https://giahuyng98.github.io/week02/awk/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/awk/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;awk - pattern scanning and text processing language&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;F value:  sets the field separator, FS, to value&lt;/li&gt;
 &lt;li&gt;v var=value assigns value to program variable var.&lt;/li&gt;
@@ -1297,76 +1890,7 @@ every change reconstruct $0 -&gt; NF …&lt;/li&gt;
 &lt;span class=&quot;token comment&quot;&gt;# a&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;# a&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1&gt;Useful resources&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.shortcutfoo.com/app/dojos/awk/cheatsheet&quot;&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git Flow]]></title><description><![CDATA[Git Flow vs Git Git flow  
-add some configuration at .git/config  - Start a new feature  - Finish up a feature  - Publish a feature…]]></description><link>https://giahuyng98.github.io/week02/git-flow/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/git-flow/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Git Flow vs Git&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://danielkummer.github.io/git-flow-cheatsheet/index.html&quot;&gt;Git flow&lt;/a&gt; &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow init&lt;/code&gt;
-add some configuration at .git/config&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;file&quot;&gt;&lt;pre class=&quot;language-file&quot;&gt;&lt;code class=&quot;language-file&quot;&gt;/ .git/config
-...
-[gitflow &amp;quot;branch&amp;quot;]
-  master = &amp;lt;set master branch&amp;gt;
-  develop = &amp;lt;set develop branch&amp;gt;
-[gitflow &amp;quot;prefix&amp;quot;]
-...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature start MYFEATURE&lt;/code&gt; - Start a new feature&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b feature/MYFEATURE develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature finish MYFEATURE&lt;/code&gt; - Finish up a feature&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff feature/MYFEATURE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d feature/MYFEATURE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature publish MYFEATURE&lt;/code&gt; - Publish a feature&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout feature/MYFEATURE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow feature pull origin MYFEATURE&lt;/code&gt; - Getting a published feature&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout feature/MYFEATURE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; pull&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release start RELEASE [BASE]&lt;/code&gt; - Start a release&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b release/RELEASE develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release publish RELEASE&lt;/code&gt; - Publish a release&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b release/RELEASE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push -u origin release/RELEASE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow release finish RELEASE&lt;/code&gt; - Finish up a release&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Merges the release branch back into &apos;master&apos;&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout master
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff release/RELEASE
-&lt;span class=&quot;token comment&quot;&gt;# Tags the release with its name&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; tag RELEASE
-&lt;span class=&quot;token comment&quot;&gt;# Back-merges the release into &apos;develop&apos;&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff release/RELEASE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d release/RELEASE
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push origin --tags&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow hotfix start VERSION [BASENAME]&lt;/code&gt; - Hotfix start&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout -b hotfix/VERSION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git flow hotfix finish VERSION&lt;/code&gt; - Finish a hotfix&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout master
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff hotfix/VERSION
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; checkout develop
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --no-ff hotfix/VERSION
-&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch -d hotfix/VERSION&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</content:encoded></item><item><title><![CDATA[first time learn git]]></title><description><![CDATA[Note Git Date: 09/07/2020 Updated: 14/07/2020 Author: huyng2 1. Why   It’s useful Quản lý các phiên bản file, merge code Hỗ trợ nhiều người…]]></description><link>https://giahuyng98.github.io/week02/git/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/git/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Note Git&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.shortcutfoo.com/app/dojos/awk/cheatsheet&quot;&gt;&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[first time learn git]]></title><description><![CDATA[Note Git Date: 09/07/2020 Updated: 14/07/2020 Author: huyng2 1. Why   It’s useful Quản lý các phiên bản file, merge code Hỗ trợ nhiều người…]]></description><link>https://giahuyng98.github.io/week02/git/</link><guid isPermaLink="false">https://giahuyng98.github.io/week02/git/</guid><pubDate>Wed, 22 Jul 2020 15:20:00 GMT</pubDate><content:encoded>&lt;h1&gt;Note Git&lt;/h1&gt;
 &lt;p&gt;&lt;em&gt;Date: 09/07/2020&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Updated: 14/07/2020&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;Author: huyng2&lt;/em&gt;&lt;/p&gt;
