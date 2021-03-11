@@ -307,8 +307,10 @@ ratings from other members, etc. How do we design indexes for suchcomplex requir
 </ul>
 </li>
 <li>Reducing Index and Data Fragmentation</li>
-<li>Sumary
-`</li>
+<li>
+<p>Sumary
+`</p>
+<ol>
 <li>Single-row access is slow, especially on spindle-based storage. (Solid-state disksare faster at random I/O, but this point remains true.)
 If the server reads a blockof data from storage and then accesses only one row in it, it wastes a lot of work.It’s much better to read in a
 block that contains lots of rows you need. Use indexesto create locality of reference for improved efficiency.</li>
@@ -318,6 +320,8 @@ work to sort it, and GROUP BY queries don’tneed to sort and group rows togethe
 <li>Index-only access is fast. If an index contains all the columns that the query needs,the storage engine doesn’t need to find the other columns
 by looking up rows inthe table. This avoids lots of single-row access, which as we know from point 1above is slow.
 `</li>
+</ol>
+</li>
 </ul>
 <h2>Optimizing select</h2>
 <ul>

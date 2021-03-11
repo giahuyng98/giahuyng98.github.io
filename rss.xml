@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 11 Mar 2021 03:04:23 GMT</lastBuildDate><item><title><![CDATA[Optimize MySQL]]></title><description><![CDATA[MySQL Architecture Clients => Connection/Thread handling, Parser, Cache, Optimizer => Storage engine Each connection get a thread Server…]]></description><link>https://giahuyng98.github.io/mysql/mysql/</link><guid isPermaLink="false">https://giahuyng98.github.io/mysql/mysql/</guid><pubDate>Wed, 24 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;MySQL Architecture&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog]]></title><description><![CDATA[a description]]></description><link>https://giahuyng98.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 11 Mar 2021 03:07:45 GMT</lastBuildDate><item><title><![CDATA[Optimize MySQL]]></title><description><![CDATA[MySQL Architecture Clients => Connection/Thread handling, Parser, Cache, Optimizer => Storage engine Each connection get a thread Server…]]></description><link>https://giahuyng98.github.io/mysql/mysql/</link><guid isPermaLink="false">https://giahuyng98.github.io/mysql/mysql/</guid><pubDate>Wed, 24 Feb 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;MySQL Architecture&lt;/h2&gt;
 &lt;p&gt;[Clients] =&gt; [Connection/Thread handling, Parser, Cache, Optimizer] =&gt; [Storage engine]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Each connection get a thread&lt;/li&gt;
@@ -307,8 +307,10 @@ ratings from other members, etc. How do we design indexes for suchcomplex requir
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Reducing Index and Data Fragmentation&lt;/li&gt;
-&lt;li&gt;Sumary
-`&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sumary
+`&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;Single-row access is slow, especially on spindle-based storage. (Solid-state disksare faster at random I/O, but this point remains true.)
 If the server reads a blockof data from storage and then accesses only one row in it, it wastes a lot of work.It’s much better to read in a
 block that contains lots of rows you need. Use indexesto create locality of reference for improved efficiency.&lt;/li&gt;
@@ -318,6 +320,8 @@ work to sort it, and GROUP BY queries don’tneed to sort and group rows togethe
 &lt;li&gt;Index-only access is fast. If an index contains all the columns that the query needs,the storage engine doesn’t need to find the other columns
 by looking up rows inthe table. This avoids lots of single-row access, which as we know from point 1above is slow.
 `&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Optimizing select&lt;/h2&gt;
 &lt;ul&gt;
